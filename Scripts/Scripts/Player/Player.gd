@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	if can_move_on_z_axis:
 		direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	else:
+		velocity.z = 0
 		direction = (transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	
 	if direction.length() > 0:
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 		
 	if direction:
 		if can_move_on_z_axis:
-			velocity = direction * speed
+			velocity = direction * speed + Vector3(0.0, velocity.y, 0.0)
 		else:
 			velocity.x = direction.x * speed
 	else:
