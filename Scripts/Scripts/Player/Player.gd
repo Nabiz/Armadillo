@@ -8,10 +8,10 @@ class_name Player
 @export_category("Child Nodes")
 @export var gfx: Node3D
 @export var gui: GUI
+@export var animation: AnimationPlayer
+
 var direction: Vector3 = Vector3.ZERO
 var can_move_on_z_axis: bool = false
-
-@export var animation: AnimationPlayer
 var can_interupt_animation: bool = true
 
 func _physics_process(delta: float) -> void:

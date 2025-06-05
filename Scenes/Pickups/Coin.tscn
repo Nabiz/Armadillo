@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhbsh7r3nno3q"]
 
-[ext_resource type="PackedScene" uid="uid://baf6onefvx3qg" path="res://Assets/Pickups/coinGold.glb" id="1_2wmsf"]
-[ext_resource type="Script" uid="uid://bg57hhr7cr22d" path="res://Scripts/Scripts/Coin.gd" id="1_fi177"]
+[ext_resource type="PackedScene" uid="uid://baf6onefvx3qg" path="res://Assets/Models/Pickups/coinGold.glb" id="1_2wmsf"]
+[ext_resource type="Script" uid="uid://bg57hhr7cr22d" path="res://Scripts/Scripts/Pickups/Coin.gd" id="1_fi177"]
 [ext_resource type="AudioStream" uid="uid://ch6f01dqlwhow" path="res://Assets/Sound/SFX/coin.wav" id="3_lokw5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fi177"]

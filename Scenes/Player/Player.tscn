@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdj7xrynbb22t"]
 
-[ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Player/Player.gd" id="1_xhfnw"]
-[ext_resource type="PackedScene" uid="uid://cyn4q0mh65exa" path="res://Player/ArmadilloGFX.tscn" id="2_q3lat"]
+[ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Scripts/Scripts/Player/Player.gd" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://cyn4q0mh65exa" path="res://Scenes/Player/ArmadilloGFX.tscn" id="2_q3lat"]
 [ext_resource type="Animation" uid="uid://dt7snpwpi61g8" path="res://Assets/Player/Animations/Roll.res" id="3_tok1r"]
 [ext_resource type="PackedScene" uid="uid://r61gesnivgak" path="res://Scenes/Interface/GUI.tscn" id="4_ddoul"]
 
@@ -891,28 +891,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769, 0)
 shape = SubResource("CapsuleShape3D_1305s")
 
 [node name="ArmadilloGFX" parent="." instance=ExtResource("2_q3lat")]
-
-[node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.68803, -0.255782, 0.253848, 0.629882)
-bones/1/rotation = Quaternion(0.142375, -0.00897096, -0.0416555, 0.988895)
-bones/2/rotation = Quaternion(0.25511, -0.0012606, -0.0603591, 0.965025)
-bones/3/rotation = Quaternion(0.25511, -0.00126045, -0.0603592, 0.965025)
-bones/4/rotation = Quaternion(0.00038749, 0.0389182, -0.0567126, 0.997632)
-bones/5/rotation = Quaternion(0.0192675, 0.0636445, 0.0147159, 0.997678)
-bones/7/rotation = Quaternion(-0.593996, -0.347439, 0.612938, -0.388281)
-bones/8/rotation = Quaternion(-0.26743, -0.266219, -0.0362596, 0.925361)
-bones/9/rotation = Quaternion(0.0951572, -0.251472, 0.14976, 0.951461)
-bones/15/rotation = Quaternion(0.513312, -0.377954, 0.686751, 0.349333)
-bones/16/rotation = Quaternion(-0.229974, 0.389786, 0.0293959, 0.891243)
-bones/17/rotation = Quaternion(0.099787, 0.0376408, -0.220551, 0.969527)
-bones/23/rotation = Quaternion(0.326535, 0.528407, 0.717038, -0.316256)
-bones/24/rotation = Quaternion(-0.98284, -0.0282381, 0.102641, 0.15064)
-bones/25/rotation = Quaternion(0.664595, 0.180843, 0.0950805, 0.718727)
-bones/26/rotation = Quaternion(0.34235, -0.148404, 0.0497584, 0.926443)
-bones/28/rotation = Quaternion(-0.303312, 0.414873, 0.819384, 0.253955)
-bones/29/rotation = Quaternion(-0.940913, 0.115995, -0.0830217, 0.307141)
-bones/30/rotation = Quaternion(0.351637, -0.235894, -0.165673, 0.89065)
-bones/31/rotation = Quaternion(0.220638, 0.129391, -0.0364688, 0.966047)
 
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {

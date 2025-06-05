@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5s21nr2n8lvc"
-path.s3tc="res://.godot/imported/coinGold.png-18bac3d732b1894ac73ddde6188cbf80.s3tc.ctex"
+path.s3tc="res://.godot/imported/coinGold.png-00999487bd05be2e80652f6c9137c679.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Sprites/coinGold.png"
-dest_files=["res://.godot/imported/coinGold.png-18bac3d732b1894ac73ddde6188cbf80.s3tc.ctex"]
+source_file="res://Assets/Sprites/Interface/coinGold.png"
+dest_files=["res://.godot/imported/coinGold.png-00999487bd05be2e80652f6c9137c679.s3tc.ctex"]
 
 [params]
 

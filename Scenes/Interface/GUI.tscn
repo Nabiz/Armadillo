@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://r61gesnivgak"]
 
-[ext_resource type="Script" uid="uid://bsettqxssm0n6" path="res://Scripts/Scripts/GUI.gd" id="1_h2k1j"]
-[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/coinGold.png" id="2_t2y5u"]
+[ext_resource type="Script" uid="uid://bsettqxssm0n6" path="res://Scripts/Scripts/Interface/GUI.gd" id="1_h2k1j"]
+[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/Interface/coinGold.png" id="2_t2y5u"]
 
 [node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("coin_label")]
 script = ExtResource("1_h2k1j")

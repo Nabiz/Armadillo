@@ -1,4 +1,5 @@
 extends Area3D
+class_name Coin
 
 @export var gfx: Node3D
 @export var collision_shape: CollisionShape3D

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://baf6onefvx3qg"
-path="res://.godot/imported/coinGold.glb-098049a008f7431d1d3c689705dc7dd4.scn"
+path="res://.godot/imported/coinGold.glb-3c760719b0030250c4bd118bd38f4b50.scn"
 
 [deps]
 
-source_file="res://Assets/Pickups/coinGold.glb"
-dest_files=["res://.godot/imported/coinGold.glb-098049a008f7431d1d3c689705dc7dd4.scn"]
+source_file="res://Assets/Models/Pickups/coinGold.glb"
+dest_files=["res://.godot/imported/coinGold.glb-3c760719b0030250c4bd118bd38f4b50.scn"]
 
 [params]
 

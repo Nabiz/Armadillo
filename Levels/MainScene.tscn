@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://c15bqah4mq85p"]
 
-[ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Player/Player.tscn" id="1_3mqji"]
-[ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://Scripts/Scripts/ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
+[ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Scenes/Player/Player.tscn" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://Scripts/Scripts/Utils/ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
-[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/coinGold.png" id="4_uxrcv"]
+[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/Interface/coinGold.png" id="4_uxrcv"]
 [ext_resource type="Shader" uid="uid://draj3p3qv5fiv" path="res://Scripts/Shaders/SkyShader.gdshader" id="6_a814b"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
 
