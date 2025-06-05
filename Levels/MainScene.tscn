@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=19 format=3 uid="uid://c15bqah4mq85p"]
 
 [ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Player/Player.tscn" id="1_3mqji"]
-[ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
+[ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://Scripts/Scripts/ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
-[ext_resource type="Script" uid="uid://bsettqxssm0n6" path="res://Scripts/HUD.gd" id="4_rf2cd"]
 [ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/coinGold.png" id="4_uxrcv"]
 [ext_resource type="Shader" uid="uid://draj3p3qv5fiv" path="res://Scripts/Shaders/SkyShader.gdshader" id="6_a814b"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
@@ -86,28 +85,8 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.44742, 0.976537, 0)
 floor_max_angle = 0.872665
 
-[node name="Skeleton3D" parent="Player/ArmadilloGFX/Armature" index="0"]
-bones/7/rotation = Quaternion(-0.593996, -0.347439, 0.612938, -0.388281)
-
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, 1, 0.408178, 1.26095, 5.95688)
-
-[node name="HUD" type="CanvasLayer" parent="Player"]
-script = ExtResource("4_rf2cd")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Player/HUD/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_uxrcv")
-stretch_mode = 3
-
-[node name="Label" type="Label" parent="Player/HUD/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "0"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.00940453, 0.979359, 0.20191, 0.326874, -0.193837, 0.924976, -13.6703, 2.30046, 3.60594)

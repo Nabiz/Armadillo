@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://r61gesnivgak"]
+
+[ext_resource type="Script" uid="uid://bsettqxssm0n6" path="res://Scripts/Scripts/GUI.gd" id="1_h2k1j"]
+[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/coinGold.png" id="2_t2y5u"]
+
+[node name="GUI" type="CanvasLayer" node_paths=PackedStringArray("coin_label")]
+script = ExtResource("1_h2k1j")
+coin_label = NodePath("HBoxContainer/Label")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_t2y5u")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"

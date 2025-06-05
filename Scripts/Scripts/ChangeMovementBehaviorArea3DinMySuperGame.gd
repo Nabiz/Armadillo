@@ -13,11 +13,13 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
+		var player: Player = body as Player
 		print("Super Wszedłeś w ChangeMovementBehaviorArea3DinMySuperGame")
-		body.change_movment_strategy_to_3d()
+		player.change_movment_strategy_to_3d()
 
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
+		var player: Player = body as Player
 		print("Super WYSZEDŁEŚ w ChangeMovementBehaviorArea3DinMySuperGame")
-		body.change_movment_strategy_to_2d()
+		player.change_movment_strategy_to_2d()
