@@ -9,8 +9,12 @@ func _enter_tree() -> void:
 func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		emit_signal("state_changing", JumpPlayerState.instance)
+	
+	if Input.is_action_just_pressed("input_attack"):
+		emit_signal("state_changing", AttackPlayerState.instance)
 
 func enter() -> void:
+	AirAttackPlayerState.instance.enabled = true
 	player.animation.play("Walk")
 
 func exit() -> void:

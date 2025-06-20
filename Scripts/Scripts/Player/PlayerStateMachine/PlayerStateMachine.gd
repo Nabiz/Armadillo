@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	player.move_and_slide()
 
 func transit_to_new_state(new_state: PlayerState) -> void:
-	current_state.exit()
-	current_state = new_state
-	current_state.enter()
+	if new_state.enabled:
+		current_state.exit()
+		current_state = new_state
+		current_state.enter()

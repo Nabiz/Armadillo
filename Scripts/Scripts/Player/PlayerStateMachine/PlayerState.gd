@@ -7,6 +7,8 @@ signal state_changing(new_state: PlayerState)
 var player_state_machine: PlayerStateMachine
 var player: Player
 
+var enabled: bool = true
+
 func _ready() -> void:
 	player_state_machine = get_parent() as PlayerStateMachine
 	player = player_state_machine.player
