@@ -15,7 +15,7 @@ func enter() -> void:
 	player.animation.play("DropAttack")
 
 func exit() -> void:
-	pass
+	player.disable_all_attack_areas()
 
 func update(_delta: float) -> void:
 	pass

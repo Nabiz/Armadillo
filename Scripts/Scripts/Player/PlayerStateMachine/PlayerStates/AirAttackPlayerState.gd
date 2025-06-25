@@ -11,8 +11,10 @@ func handle_input(_event: InputEvent) -> void:
 
 func enter() -> void:
 	enabled = false
+	player.disable_destroyable_collision()
 	
 	player.velocity.y = 0
+	#TODO bug with air kick back
 	if player.velocity.x >= 0:
 		player.velocity.x = player.air_attack_speed
 	else:
@@ -21,6 +23,9 @@ func enter() -> void:
 	player.animation.play("AirAttack")
 
 func exit() -> void:
+	player.enable_destroyable_collision()
+	player.disable_all_attack_areas()
+	
 	player.animation.speed_scale = 1.0
 	player.velocity.x = player.speed
 

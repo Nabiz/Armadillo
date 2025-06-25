@@ -15,6 +15,7 @@ func enter() -> void:
 	player.velocity = Vector3.ZERO
 
 func exit() -> void:
+	player.disable_all_attack_areas()
 	player.animation.speed_scale = 1.0
 
 func update(_delta: float) -> void:

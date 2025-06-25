@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0ucbx5gdmswt"]
+
+[ext_resource type="Script" uid="uid://cmax88oam115" path="res://Scripts/Scripts/Props/DestroyableStaticBody.gd" id="1_3c2ir"]
+[ext_resource type="PackedScene" uid="uid://btcgegrbs7ufj" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/barrel.glb" id="1_ey7wr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3c2ir"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fd4ly"]
+points = PackedVector3Array(-0.0902602, 0.134039, -0.217887, -0.0746054, 0, -0.180094, -0.217887, 0.134039, -0.0902602, -0.0902602, 0.266081, -0.217887, 0.0902175, 0.134039, -0.217887, -0.180094, 0, -0.0746054, 0.0745628, 0, -0.180094, -0.217887, 0.134039, 0.0902175, -0.217887, 0.266081, -0.0902602, -0.0738803, 0.40016, -0.178302, 0.0902175, 0.266081, -0.217887, 0.217887, 0.134039, -0.0902602, -0.180094, 0, 0.0745628, 0.180051, 0, -0.0746054, -0.217887, 0.266081, 0.0902175, -0.0902602, 0.134039, 0.217887, -0.178302, 0.40016, -0.0738803, 0.0738376, 0.40016, -0.178302, 0.217887, 0.266081, -0.0902602, 0.217887, 0.134039, 0.0902175, -0.0746054, 0, 0.180051, 0.180051, 0, 0.0745628, -0.0902602, 0.266081, 0.217887, -0.178302, 0.40016, 0.0738376, 0.0902175, 0.134039, 0.217887, 0.17826, 0.40016, -0.0738803, 0.217887, 0.266081, 0.0902175, 0.0745628, 0, 0.180051, -0.0738803, 0.40016, 0.17826, 0.0902175, 0.266081, 0.217887, 0.17826, 0.40016, 0.0738376, 0.0738376, 0.40016, 0.17826)
+
+[node name="DestroyableStaticBody" type="Area3D"]
+script = ExtResource("1_3c2ir")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.460758, 0)
+shape = SubResource("BoxShape3D_3c2ir")
+
+[node name="barrel" parent="." instance=ExtResource("1_ey7wr")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="barrel/barrel" index="0"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="barrel/barrel/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_fd4ly")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
+[editable path="barrel"]
