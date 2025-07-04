@@ -10,11 +10,15 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func enter() -> void:
+	if abs(player.velocity.x) < 0.5:
+		emit_signal("state_changing", FallPlayerState.instance)
+		return
+
 	enabled = false
 	player.disable_destroyable_collision()
 	
 	player.velocity.y = 0
-	#TODO bug with air kick back
+
 	if player.velocity.x >= 0:
 		player.velocity.x = player.air_attack_speed
 	else:
@@ -34,4 +38,5 @@ func update(_delta: float) -> void:
 		emit_signal("state_changing", FallPlayerState.instance)
 
 func physics_update(_delta: float) -> void:
-	pass
+	if abs(player.velocity.x) < 0.1:
+		emit_signal("state_changing", FallPlayerState.instance)
