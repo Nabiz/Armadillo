@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6hhn5cyqee3"]
+
+[ext_resource type="Script" uid="uid://b4ogtwd0k50ur" path="res://Scripts/Scripts/Camera/BallCamera.gd" id="1_jmqii"]
+[ext_resource type="PackedScene" uid="uid://naguplp0cuib" path="res://Scenes/Player/PlayerBall.tscn" id="2_03plg"]
+[ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Scenes/Player/Player.tscn" id="3_6nma4"]
+[ext_resource type="PackedScene" uid="uid://r61gesnivgak" path="res://Scenes/Interface/GUI.tscn" id="4_rm4y0"]
+
+[node name="PlayerNodes" type="Node"]
+
+[node name="BallCamera3D" type="Camera3D" parent="." node_paths=PackedStringArray("object_to_look_at")]
+transform = Transform3D(1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, 1, -16, 2, 6)
+script = ExtResource("1_jmqii")
+object_to_look_at = NodePath("../PlayerBall")
+
+[node name="PlayerBall" parent="." node_paths=PackedStringArray("ball_camera", "player") instance=ExtResource("2_03plg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 0)
+collision_mask = 3
+ball_camera = NodePath("../BallCamera3D")
+player = NodePath("../Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball") instance=ExtResource("3_6nma4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+gui = NodePath("../GUI")
+player_ball = NodePath("../PlayerBall")
+
+[node name="GUI" parent="." instance=ExtResource("4_rm4y0")]

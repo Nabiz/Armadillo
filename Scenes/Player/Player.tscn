@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdj7xrynbb22t"]
+[gd_scene load_steps=17 format=3 uid="uid://cdj7xrynbb22t"]
 
 [ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Scripts/Scripts/Player/Player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://vdqmc7bu7mhy" path="res://Scenes/Player/AttackAreas/PlayerAttackArea.tscn" id="2_jmcll"]
 [ext_resource type="PackedScene" uid="uid://cyn4q0mh65exa" path="res://Scenes/Player/ArmadilloGFX.tscn" id="2_q3lat"]
-[ext_resource type="PackedScene" uid="uid://r61gesnivgak" path="res://Scenes/Interface/GUI.tscn" id="4_ddoul"]
 [ext_resource type="PackedScene" uid="uid://cgi3en7lguwy3" path="res://Scenes/Player/PlayerStateMachine/PlayerStateMachine.tscn" id="5_jmcll"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1305s"]
@@ -1492,12 +1491,15 @@ size = Vector3(0.603638, 0.387131, 0.407715)
 [sub_resource type="SphereShape3D" id="SphereShape3D_jmcll"]
 radius = 0.6
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "gui", "animation", "attack_areas")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "gui", "animation", "camera", "state_machine", "attack_areas")]
 collision_mask = 3
 script = ExtResource("1_xhfnw")
 gfx = NodePath("ArmadilloGFX")
-gui = NodePath("GUI")
+collision = NodePath("CollisionShape3D")
+gui = NodePath("")
 animation = NodePath("ArmadilloGFX/AnimationPlayer")
+camera = NodePath("Camera3D")
+state_machine = NodePath("PlayerStateMachine")
 attack_areas = [NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1506,35 +1508,6 @@ shape = SubResource("CapsuleShape3D_1305s")
 
 [node name="ArmadilloGFX" parent="." instance=ExtResource("2_q3lat")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.106737, 0.618421, 0.777666, -0.0373809)
-bones/1/rotation = Quaternion(0.295067, -0.0957552, 0.0472497, 0.949491)
-bones/2/rotation = Quaternion(-0.00256898, -0.0325685, 0.0233833, 0.999193)
-bones/3/rotation = Quaternion(-0.00194936, -0.0307943, 0.0264491, 0.999174)
-bones/4/rotation = Quaternion(-0.00250862, -0.0303077, 0.00824954, 0.999503)
-bones/5/rotation = Quaternion(-0.139822, 0.0213919, -0.0384065, 0.9892)
-bones/7/rotation = Quaternion(-0.577172, -0.41593, 0.572686, -0.407315)
-bones/8/rotation = Quaternion(0.213777, -0.607853, 0.128786, 0.753809)
-bones/9/rotation = Quaternion(0.0263509, 0.00054628, 0.827031, 0.561538)
-bones/10/rotation = Quaternion(-0.253535, 0.022398, 0.114521, 0.960262)
-bones/11/position = Vector3(-9.86143e-06, 10.4223, -2.27241e-07)
-bones/12/rotation = Quaternion(0.233994, 0.0700097, -0.218912, 0.944681)
-bones/13/rotation = Quaternion(-0.0690432, -0.0374921, 0.0429557, 0.995983)
-bones/15/rotation = Quaternion(0.663988, -0.332338, 0.531972, 0.407035)
-bones/16/rotation = Quaternion(0.166905, 0.38084, -0.371311, 0.8302)
-bones/18/rotation = Quaternion(0.127776, -0.327147, 0.0663436, 0.933941)
-bones/19/rotation = Quaternion(0.0567008, -0.708173, -0.195619, 0.676025)
-bones/20/rotation = Quaternion(0.384576, -0.0246041, -0.00978345, 0.922714)
-bones/21/rotation = Quaternion(0.297392, -0.0559747, 0.0208043, 0.952886)
-bones/23/rotation = Quaternion(-0.0121258, 0.741859, 0.605093, -0.288721)
-bones/24/rotation = Quaternion(-0.924532, -0.00101059, 0.0167183, 0.380737)
-bones/25/rotation = Quaternion(0.458761, 0.067095, -0.015764, 0.885883)
-bones/26/rotation = Quaternion(0.364557, -0.0655847, 0.0249565, 0.928533)
-bones/28/rotation = Quaternion(-0.0503018, 0.565302, 0.760722, 0.314968)
-bones/29/rotation = Quaternion(-0.686353, 0.0066683, 0.0662953, 0.72421)
-bones/30/rotation = Quaternion(0.381272, 0.0456736, -0.0330149, 0.922743)
-bones/31/rotation = Quaternion(0.342151, 0.0643106, -0.0235759, 0.937145)
 
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
@@ -1561,10 +1534,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0218089, -0.213851, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0531671, 0)
 shape = SubResource("SphereShape3D_jmcll")
 
-[node name="GUI" parent="." instance=ExtResource("4_ddoul")]
-
 [node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jmcll")]
 player = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+current = true
 
 [editable path="ArmadilloGFX"]
 [editable path="ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"]
