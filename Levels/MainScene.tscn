@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=24 format=3 uid="uid://c15bqah4mq85p"]
 
 [ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://Scripts/Scripts/Utils/ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
@@ -7,6 +7,10 @@
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
 [ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="7_5eubm"]
 [ext_resource type="PackedScene" uid="uid://b0ucbx5gdmswt" path="res://Scenes/Props/DestroyableStaticBody.tscn" id="7_lljjv"]
+[ext_resource type="PackedScene" uid="uid://c60ygxspfs8s6" path="res://Scenes/Enemy/Enemy.tscn" id="8_5eubm"]
+[ext_resource type="PackedScene" uid="uid://bb7w7y1t3rh8x" path="res://Scenes/Managers/SpawnManager.tscn" id="9_4h6gp"]
+[ext_resource type="PackedScene" uid="uid://bjmqhylnoq4mp" path="res://Scenes/Interface/GameOverScreen.tscn" id="10_rc4gq"]
+[ext_resource type="PackedScene" uid="uid://b3pure6l7node" path="res://Scenes/Props/SpawnPoint.tscn" id="10_v8p1f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3mqji"]
 size = Vector3(5, 11.0916, 15.1721)
@@ -112,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7776, 1.10174, 2.4393)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7776, 0.812894, 5.53445)
 
 [node name="Coin2" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.307238, 1.92017, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83875, 5.01921, 0)
 
 [node name="Coin3" parent="." instance=ExtResource("3_rpqi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06022, 3.27611, 0)
@@ -130,6 +134,28 @@ transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 9.26552, 3.58999, 0)
 transform = Transform3D(-8.74228e-08, 4, 0, -2, -1.74846e-07, 0, 0, 0, 2, 16.5048, -0.314824, -0.153153)
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
+
+[node name="Enemy" parent="." instance=ExtResource("8_5eubm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15843, 2.00519, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("8_5eubm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1614, 2.00519, 0)
+
+[node name="Enemy3" parent="." instance=ExtResource("8_5eubm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1492, 2.00519, 0)
+
+[node name="SpawnManager" parent="." instance=ExtResource("9_4h6gp")]
+
+[node name="Marker3D" parent="SpawnManager" instance=ExtResource("10_v8p1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 9.5, 0)
+
+[node name="SpawnPoint" parent="SpawnManager" instance=ExtResource("10_v8p1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1.5, 0)
+
+[node name="SpawnPoint2" parent="SpawnManager" instance=ExtResource("10_v8p1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0147, 1.5, 0)
+
+[node name="GameOverScreen" parent="." instance=ExtResource("10_rc4gq")]
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

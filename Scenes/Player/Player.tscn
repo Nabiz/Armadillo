@@ -1491,12 +1491,11 @@ size = Vector3(0.603638, 0.387131, 0.407715)
 [sub_resource type="SphereShape3D" id="SphereShape3D_jmcll"]
 radius = 0.6
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "gui", "animation", "camera", "state_machine", "attack_areas")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas")]
 collision_mask = 3
 script = ExtResource("1_xhfnw")
 gfx = NodePath("ArmadilloGFX")
 collision = NodePath("CollisionShape3D")
-gui = NodePath("")
 animation = NodePath("ArmadilloGFX/AnimationPlayer")
 camera = NodePath("Camera3D")
 state_machine = NodePath("PlayerStateMachine")

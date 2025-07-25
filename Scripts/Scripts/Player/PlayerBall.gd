@@ -32,3 +32,9 @@ func deactivate_ball() -> void:
 	collision.disabled = true
 	visible = false
 	ball_camera.clear_current()
+
+func take_damage(ammount: int) -> void:
+	player.get_gui().lose_hearts(ammount)
+	if player.get_gui().hearts <= 0:
+		GameOverScreen.instance.show_gameover()
+		SpawnManager.instance.spawn_player_ball(self)

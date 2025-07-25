@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3pure6l7node"]
+
+[ext_resource type="Script" uid="uid://bc7lyuqbtvlgu" path="res://Scripts/Scripts/Props/SpawnPoint.gd" id="1_xxo10"]
+[ext_resource type="PackedScene" uid="uid://w7yt12nxb2fe" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/flag.glb" id="2_2iy7x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_71tao"]
+radius = 1.0
+
+[node name="SpawnPoint" type="Marker3D"]
+script = ExtResource("1_xxo10")
+
+[node name="flag2" parent="." instance=ExtResource("2_2iy7x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_71tao")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

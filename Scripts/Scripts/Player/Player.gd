@@ -22,6 +22,11 @@ class_name Player
 var direction: Vector3 = Vector3.ZERO
 var can_move_on_z_axis: bool = false
 
+static var instance: Player
+
+func _enter_tree() -> void:
+	instance = self
+
 func get_gui() -> GUI:
 	return gui
 
@@ -64,3 +69,12 @@ func transform_to_ball() -> void:
 		
 		collision.disabled = false
 		gfx.visible = true
+
+func take_damage(ammount: int) -> void:
+	get_gui().lose_hearts(ammount)
+	if get_gui().hearts <= 0:
+		GameOverScreen.instance.show_gameover()
+		SpawnManager.instance.spawn_player(self)
+
+func resurect() -> void:
+	get_gui().lose_hearts(-3)
