@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgi3en7lguwy3"]
+[gd_scene load_steps=10 format=3 uid="uid://cgi3en7lguwy3"]
 
 [ext_resource type="Script" uid="uid://def6kj353pvn8" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStateMachine.gd" id="1_i0y42"]
 [ext_resource type="Script" uid="uid://0as2hidu0k1q" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/IdlePlayerState.gd" id="2_vocv5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dnfi5te5u2lg7" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/AttackPlayerState.gd" id="6_ntuyh"]
 [ext_resource type="Script" uid="uid://dyvbxqvfo8qmc" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/AirAttackPlayerState.gd" id="7_55jev"]
 [ext_resource type="Script" uid="uid://bdt5jppxja6mk" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/DropAttackPlayerState.gd" id="8_foig6"]
+[ext_resource type="Script" uid="uid://r5l7xgxsoshv" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/ForrwardWallrunPlayerState.gd" id="9_h2b4q"]
 
 [node name="PlayerStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_i0y42")
@@ -34,6 +35,9 @@ script = ExtResource("7_55jev")
 [node name="DropAttack" type="Node" parent="."]
 script = ExtResource("8_foig6")
 
+[node name="ForrwardWallrun" type="Node" parent="."]
+script = ExtResource("9_h2b4q")
+
 [connection signal="state_changing" from="Idle" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Fall" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Walk" to="." method="transit_to_new_state"]
@@ -41,3 +45,4 @@ script = ExtResource("8_foig6")
 [connection signal="state_changing" from="Attack" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="AirAttack" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="DropAttack" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="ForrwardWallrun" to="." method="transit_to_new_state"]

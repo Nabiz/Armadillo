@@ -3,15 +3,24 @@ class_name WalkPlayerState
 
 static var instance: WalkPlayerState
 
+@onready var raycast_vector_right := Vector3(0.7, 0.0, 0.0)
+@onready var raycast_vector_left := Vector3(-0.7, 0.0, 0.0)
+
 func _enter_tree() -> void:
 	instance = self
 
 func handle_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_pressed("input_wallrun"):
+		if player.has_wall_before():
+			emit_signal("state_changing", ForrwardWallrunPlayerState.instance)
+	
+	elif Input.is_action_just_pressed("ui_select"):
 		emit_signal("state_changing", JumpPlayerState.instance)
 	
-	if Input.is_action_just_pressed("input_attack"):
+	elif Input.is_action_just_pressed("input_attack"):
 		emit_signal("state_changing", AttackPlayerState.instance)
+	
+
 
 func enter() -> void:
 	AirAttackPlayerState.instance.enabled = true
@@ -47,6 +56,11 @@ func physics_update(_delta: float) -> void:
 		p.velocity.x = move_toward(p.velocity.x, 0, p.speed)
 		if p.can_move_on_z_axis:
 			p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
+	
+	if p.direction.x < 0:
+		player.set_forrward_wallrun_raycast_direction(raycast_vector_left)
+	else:
+		player.set_forrward_wallrun_raycast_direction(raycast_vector_right)
 	
 	if not p.is_on_floor():
 		emit_signal("state_changing", FallPlayerState.instance)

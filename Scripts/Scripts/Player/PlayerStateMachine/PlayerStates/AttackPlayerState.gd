@@ -10,7 +10,7 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func enter() -> void:
-	player.animation.speed_scale = 2.0
+	player.animation.speed_scale = 2.5
 	player.animation.play("Attack")
 	player.velocity = Vector3.ZERO
 

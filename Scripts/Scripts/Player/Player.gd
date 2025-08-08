@@ -16,6 +16,8 @@ class_name Player
 
 @export var attack_areas: Array[PlayerAttackArea]
 
+@export var forrward_wall_raycast: RayCast3D
+
 @export_category("Ball")
 @export var player_ball: PlayerBall
 
@@ -43,7 +45,7 @@ func disable_all_attack_areas() -> void:
 
 var is_ball: bool = false
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_text_backspace"):
+	if Input.is_action_just_pressed("input_ball"):
 		transform_to_ball()
 
 func transform_to_ball() -> void:
@@ -78,3 +80,10 @@ func take_damage(ammount: int) -> void:
 
 func resurect() -> void:
 	get_gui().lose_hearts(-3)
+
+func set_forrward_wallrun_raycast_direction(target_position: Vector3) -> void:
+	forrward_wall_raycast.target_position = target_position
+
+func has_wall_before() -> bool:
+	#forrward_wall_raycast.force_raycast_update()
+	return forrward_wall_raycast.is_colliding()
