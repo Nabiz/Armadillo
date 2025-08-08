@@ -45,8 +45,10 @@ func disable_all_attack_areas() -> void:
 
 var is_ball: bool = false
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("input_ball"):
+	if Input.is_action_just_pressed("input_ball") and not is_movment3D:
 		transform_to_ball()
+	if can_change_movement_strategy and Input.is_action_just_pressed("input_change_state"):
+		change_movment_strategy()
 
 func transform_to_ball() -> void:
 	if not is_ball:
@@ -87,3 +89,29 @@ func set_forrward_wallrun_raycast_direction(target_position: Vector3) -> void:
 func has_wall_before() -> bool:
 	#forrward_wall_raycast.force_raycast_update()
 	return forrward_wall_raycast.is_colliding()
+
+@export_category("FSM")
+@export var tooltip: Label
+var is_movment3D: bool = false
+var can_change_movement_strategy: bool = false
+@export var state_machine_2d: PlayerStateMachine
+@export var state_machine_3d: PlayerStateMachine3D
+
+func enable_movement_strategy_change() -> void:
+	tooltip.visible = true
+	can_change_movement_strategy = true
+
+func disable_movement_strategy_change() -> void:
+	tooltip.visible = false
+	can_change_movement_strategy = false
+
+func change_movment_strategy():
+	if is_movment3D:
+		is_movment3D = false
+		state_machine_3d.process_mode = Node.PROCESS_MODE_DISABLED
+		state_machine_2d.process_mode = Node.PROCESS_MODE_INHERIT
+		position.z = 0.0
+	else:
+		is_movment3D = true
+		state_machine_2d.process_mode = Node.PROCESS_MODE_DISABLED
+		state_machine_3d.process_mode = Node.PROCESS_MODE_INHERIT

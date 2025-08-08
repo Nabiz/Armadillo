@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://brfhehoane2be"]
+
+[ext_resource type="Script" uid="uid://c0vbki07tj3v5" path="res://Scripts/Scripts/Props/ChangeMovementStratedyArea.gd" id="1_wvplm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71tao"]
+size = Vector3(10, 1, 1)
+
+[node name="ChangeMovementStrategyArea" type="Area3D"]
+script = ExtResource("1_wvplm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05336, 0, 0)
+shape = SubResource("BoxShape3D_71tao")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

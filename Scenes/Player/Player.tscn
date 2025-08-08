@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdj7xrynbb22t"]
+[gd_scene load_steps=18 format=3 uid="uid://cdj7xrynbb22t"]
 
 [ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Scripts/Scripts/Player/Player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://vdqmc7bu7mhy" path="res://Scenes/Player/AttackAreas/PlayerAttackArea.tscn" id="2_jmcll"]
 [ext_resource type="PackedScene" uid="uid://cyn4q0mh65exa" path="res://Scenes/Player/ArmadilloGFX.tscn" id="2_q3lat"]
+[ext_resource type="PackedScene" uid="uid://cfmid7wfljjsa" path="res://Scenes/Player/PlayerStateMachine/PlayerStateMachine3D.tscn" id="5_4wape"]
 [ext_resource type="PackedScene" uid="uid://cgi3en7lguwy3" path="res://Scenes/Player/PlayerStateMachine/PlayerStateMachine.tscn" id="5_jmcll"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1305s"]
@@ -1491,7 +1492,7 @@ size = Vector3(0.603638, 0.387131, 0.407715)
 [sub_resource type="SphereShape3D" id="SphereShape3D_jmcll"]
 radius = 0.6
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas", "forrward_wall_raycast")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas", "forrward_wall_raycast", "state_machine_2d", "state_machine_3d")]
 collision_mask = 3
 script = ExtResource("1_xhfnw")
 gfx = NodePath("ArmadilloGFX")
@@ -1501,6 +1502,8 @@ camera = NodePath("Camera3D")
 state_machine = NodePath("PlayerStateMachine")
 attack_areas = [NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea")]
 forrward_wall_raycast = NodePath("ForrwardWallRayCast")
+state_machine_2d = NodePath("PlayerStateMachine")
+state_machine_3d = NodePath("PlayerStateMachine3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.769, 0)
@@ -1557,6 +1560,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0531671, 0)
 shape = SubResource("SphereShape3D_jmcll")
 
 [node name="PlayerStateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jmcll")]
+player = NodePath("..")
+
+[node name="PlayerStateMachine3D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_4wape")]
+process_mode = 4
 player = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="."]

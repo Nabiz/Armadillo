@@ -1,9 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=18 format=3 uid="uid://c15bqah4mq85p"]
 
-[ext_resource type="Script" uid="uid://dgp02g1jytn7e" path="res://Scripts/Scripts/Utils/ChangeMovementBehaviorArea3DinMySuperGame.gd" id="2_x4av3"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
-[ext_resource type="Texture2D" uid="uid://5s21nr2n8lvc" path="res://Assets/Sprites/Interface/coinGold.png" id="4_uxrcv"]
-[ext_resource type="Shader" uid="uid://draj3p3qv5fiv" path="res://Scripts/Shaders/SkyShader.gdshader" id="6_a814b"]
+[ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="4_ptrn6"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
 [ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="7_5eubm"]
 [ext_resource type="PackedScene" uid="uid://b0ucbx5gdmswt" path="res://Scenes/Props/DestroyableStaticBody.tscn" id="7_lljjv"]
@@ -11,71 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bb7w7y1t3rh8x" path="res://Scenes/Managers/SpawnManager.tscn" id="9_4h6gp"]
 [ext_resource type="PackedScene" uid="uid://bjmqhylnoq4mp" path="res://Scenes/Interface/GameOverScreen.tscn" id="10_rc4gq"]
 [ext_resource type="PackedScene" uid="uid://b3pure6l7node" path="res://Scenes/Props/SpawnPoint.tscn" id="10_v8p1f"]
+[ext_resource type="PackedScene" uid="uid://brfhehoane2be" path="res://Scenes/Props/ChangeMovementStrategyArea.tscn" id="12_71tao"]
 [ext_resource type="PackedScene" uid="uid://bff2uhp1ce6wy" path="res://Scenes/Props/RunWall.tscn" id="12_ptrn6"]
 [ext_resource type="Script" uid="uid://bcjr7tcuqngyq" path="res://Scripts/temp/cameraFar.gd" id="13_71tao"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3mqji"]
-size = Vector3(5, 11.0916, 15.1721)
-
-[sub_resource type="Curve" id="Curve_a814b"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.199203, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.707865), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_5crlr"]
-curve = SubResource("Curve_a814b")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hbc2u"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_torvr"]
-in_3d_space = true
-seamless = true
-noise = SubResource("FastNoiseLite_hbc2u")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8xkvn"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p5x2j"]
-in_3d_space = true
-seamless = true
-noise = SubResource("FastNoiseLite_8xkvn")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a814b"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5crlr"]
-seamless = true
-noise = SubResource("FastNoiseLite_a814b")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5crlr"]
-shader = ExtResource("6_a814b")
-shader_parameter/cloud_shape_sampler = SubResource("NoiseTexture2D_p5x2j")
-shader_parameter/cloud_noise_sampler = SubResource("NoiseTexture2D_torvr")
-shader_parameter/cloud_curves = SubResource("CurveTexture_5crlr")
-shader_parameter/clouds_samples = 24
-shader_parameter/shadow_sample = 4
-shader_parameter/clouds_density = 0.5
-shader_parameter/clouds_scale = 1.0
-shader_parameter/clouds_smoothness = 0.1
-shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
-shader_parameter/clouds_shadow_intensity = 2.2
-shader_parameter/high_clouds_sampler = SubResource("NoiseTexture2D_5crlr")
-shader_parameter/high_clouds_density = 0.0
-shader_parameter/top_color = Color(0.32549, 0.572549, 1, 1)
-shader_parameter/bottom_color = Color(0.215686, 0.47451, 1, 1)
-shader_parameter/sun_scatter = Color(0.231373, 0.231373, 0.231373, 1)
-shader_parameter/astro_tint = Color(1, 1, 1, 1)
-shader_parameter/astro_sampler = ExtResource("4_uxrcv")
-shader_parameter/astro_scale = 4.0
-shader_parameter/astro_intensity = 1.0
-shader_parameter/stars_intensity = 0.0
-shader_parameter/shooting_stars_intensity = 0.0
-shader_parameter/shooting_star_tint = Color(0, 0, 0, 1)
-
-[sub_resource type="Sky" id="Sky_hbc2u"]
-sky_material = SubResource("ShaderMaterial_5crlr")
-
-[sub_resource type="Environment" id="Environment_torvr"]
-background_mode = 2
-sky = SubResource("Sky_hbc2u")
-sky_custom_fov = 50.0
 
 [sub_resource type="PrismMesh" id="PrismMesh_ptrn6"]
 left_to_right = -0.2
@@ -95,7 +31,7 @@ size = Vector3(53.9475, 22.4589, 12.2239)
 [node name="MainScene" type="Node3D"]
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.003, 1.37772, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7151, 1.37772, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -109,14 +45,6 @@ metadata/_editor_floor_ = Vector3(0, -9, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.00940453, 0.979359, 0.20191, 0.326874, -0.193837, 0.924976, -13.6703, 2.30046, 3.60594)
-
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4.13, 29.7702, 0, 0)
-script = ExtResource("2_x4av3")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.46288, 1.61328, -2.62537)
-shape = SubResource("BoxShape3D_3mqji")
 
 [node name="Coin" parent="." instance=ExtResource("3_rpqi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.041, 1.92017, 0)
@@ -143,7 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83875, 5.01921, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06022, 3.27611, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_torvr")
+environment = ExtResource("4_ptrn6")
 
 [node name="DestroyableStaticBody" parent="." instance=ExtResource("7_lljjv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.826, 0.5, 0)
@@ -156,9 +84,6 @@ transform = Transform3D(-8.74228e-08, 4, 0, -2, -1.74846e-07, 0, 0, 0, 2, 16.504
 
 [node name="Enemy" parent="." instance=ExtResource("8_5eubm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15843, 2.00519, 0)
-
-[node name="Enemy2" parent="." instance=ExtResource("8_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1614, 2.00519, 0)
 
 [node name="Enemy3" parent="." instance=ExtResource("8_5eubm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1492, 2.00519, 0)
@@ -247,7 +172,8 @@ script = ExtResource("13_71tao")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0972, -7.2999, -1.20911)
 shape = SubResource("BoxShape3D_ptrn6")
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[node name="ChangeMovementStrategyArea" parent="." instance=ExtResource("12_71tao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7024, 1, 0)
+
 [connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D2" to="Area3D2" method="_on_body_exited"]

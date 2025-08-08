@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfmid7wfljjsa"]
+
+[ext_resource type="Script" uid="uid://cybhsmpvf73dr" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStateMachine3D.gd" id="1_y1ole"]
+[ext_resource type="Script" uid="uid://beiepeayq81e4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/WalkPlayerState3D.gd" id="2_wmhvx"]
+[ext_resource type="Script" uid="uid://c0nh2y0k0l7ex" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/IdlePlayerState3D.gd" id="3_wmhvx"]
+[ext_resource type="Script" uid="uid://0cop52w7u81q" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/JumpPlayerState3D.gd" id="4_mfsda"]
+[ext_resource type="Script" uid="uid://bj6q2jp8bxgp" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/FallPlayerState3D.gd" id="5_5mepl"]
+
+[node name="PlayerStateMachine3D" type="Node" node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_y1ole")
+current_state = NodePath("Idle3D")
+
+[node name="Walk3D" type="Node" parent="."]
+script = ExtResource("2_wmhvx")
+
+[node name="Idle3D" type="Node" parent="."]
+script = ExtResource("3_wmhvx")
+
+[node name="Jump3D" type="Node" parent="."]
+script = ExtResource("4_mfsda")
+
+[node name="Fall3D" type="Node" parent="."]
+script = ExtResource("5_5mepl")
+
+[connection signal="state_changing" from="Walk3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Idle3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Jump3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Fall3D" to="." method="transit_to_new_state"]

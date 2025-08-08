@@ -18,9 +18,29 @@ collision_mask = 3
 ball_camera = NodePath("../BallCamera3D")
 player = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball") instance=ExtResource("3_6nma4")]
+[node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "tooltip") instance=ExtResource("3_6nma4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 gui = NodePath("../GUI")
 player_ball = NodePath("../PlayerBall")
+tooltip = NodePath("../Tooltip/Label")
 
 [node name="GUI" parent="." instance=ExtResource("4_rm4y0")]
+
+[node name="Tooltip" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.219036, 3.71052, 0)
+
+[node name="Label" type="Label" parent="Tooltip"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -11.5
+offset_right = 32.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Press RB"

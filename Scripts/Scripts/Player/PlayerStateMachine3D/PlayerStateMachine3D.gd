@@ -1,0 +1,2 @@
+extends PlayerStateMachine
+class_name PlayerStateMachine3D
