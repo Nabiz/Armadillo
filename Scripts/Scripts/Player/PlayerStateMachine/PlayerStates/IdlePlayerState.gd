@@ -17,7 +17,8 @@ func handle_input(_event: InputEvent) -> void:
 		emit_signal("state_changing", AttackPlayerState.instance)
 
 func enter() -> void:
-	AirAttackPlayerState.instance.enabled = true
+	if SkillManager.is_air_attack_unlocked:
+		AirAttackPlayerState3D.instance.enabled = true
 	player.animation.play("Idle")
 	player.velocity = Vector3.ZERO
 

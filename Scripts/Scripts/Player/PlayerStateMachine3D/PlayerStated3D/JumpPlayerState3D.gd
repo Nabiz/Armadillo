@@ -1,4 +1,4 @@
-extends PlayerState
+extends PlayerState3D
 class_name JumpPlayerState3D
 
 static var instance: JumpPlayerState3D
@@ -7,12 +7,10 @@ func _enter_tree() -> void:
 	instance = self
 
 func handle_input(_event: InputEvent) -> void:
-	pass
-	#if Input.is_action_just_pressed("input_attack"):
-		#if Input.is_action_pressed("ui_down"):
-			#emit_signal("state_changing", DropAttackPlayerState.instance)
-		#elif Input.get_axis("ui_left", "ui_right"):
-			#emit_signal("state_changing", AirAttackPlayerState.instance)
+	if Input.is_action_just_pressed("input_attack"):
+		emit_signal("state_changing", AirAttackPlayerState3D.instance)
+	elif Input.is_action_just_pressed("input_special"):
+		emit_signal("state_changing", DropAttackPlayerState3D.instance)
 
 func enter() -> void:
 	player.animation.play("Jump")

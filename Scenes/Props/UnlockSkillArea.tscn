@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://0w114pdoh04x"]
+
+[ext_resource type="Script" uid="uid://bnvt0ollyb5by" path="res://Scripts/Scripts/Pickups/UnlockSkillArea.gd" id="1_rwqcd"]
+[ext_resource type="PackedScene" uid="uid://cc6as82l8jmts" path="res://Assets/Models/Pickups/wholerHam.glb" id="2_d3l16"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pciqy"]
+size = Vector3(0.529419, 0.479126, 1)
+
+[node name="UnlockSkillArea" type="Area3D"]
+script = ExtResource("1_rwqcd")
+
+[node name="wholerHam2" parent="." instance=ExtResource("2_d3l16")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00872803, 0.212923, 0)
+shape = SubResource("BoxShape3D_pciqy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

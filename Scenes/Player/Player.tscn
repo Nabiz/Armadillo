@@ -12,7 +12,7 @@ height = 1.55204
 
 [sub_resource type="Animation" id="Animation_jmcll"]
 resource_name = "Armature|mixamo_com|Layer0_002"
-length = 0.5
+length = 1.5
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1487,7 +1487,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jmcll"]
-size = Vector3(0.603638, 0.387131, 0.407715)
+size = Vector3(0.604, 0.837, 0.408)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jmcll"]
 radius = 0.6
@@ -1512,28 +1512,6 @@ shape = SubResource("CapsuleShape3D_1305s")
 [node name="ArmadilloGFX" parent="." instance=ExtResource("2_q3lat")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/position = Vector3(-4.96429, 19.9528, -64.5019)
-bones/0/rotation = Quaternion(-0.679264, -0.267932, 0.322437, 0.602368)
-bones/1/rotation = Quaternion(0.109787, 0.153722, 0.0311704, 0.981501)
-bones/2/rotation = Quaternion(0.0143078, 0.0928739, 0.0481304, 0.994411)
-bones/3/rotation = Quaternion(0.00249804, 0.095783, 0.0458679, 0.994342)
-bones/8/rotation = Quaternion(0.15684, 0.298219, -0.375487, 0.86341)
-bones/9/rotation = Quaternion(0.0215144, 0.000717006, 0.675249, 0.737275)
-bones/11/position = Vector3(2.22625e-06, 10.4223, 7.09046e-06)
-bones/11/rotation = Quaternion(0.168547, -0.00133577, 0.0953527, 0.98107)
-bones/15/rotation = Quaternion(0.589958, -0.411687, 0.49755, 0.484673)
-bones/16/rotation = Quaternion(0.347381, 0.372152, -0.216532, 0.833032)
-bones/17/rotation = Quaternion(0.020973, -0.000132227, -0.894767, 0.44604)
-bones/23/rotation = Quaternion(0.016432, 0.843025, 0.529465, -0.0933073)
-bones/24/rotation = Quaternion(-0.915441, 0.0120472, 0.0870338, 0.392744)
-bones/25/rotation = Quaternion(0.0698877, 0.13377, 0.0555766, 0.986982)
-bones/26/rotation = Quaternion(0.189068, -0.0597156, 0.0165449, 0.980007)
-bones/28/rotation = Quaternion(-0.05069, 0.122634, 0.954269, 0.267885)
-bones/29/rotation = Quaternion(-0.576527, -0.0275524, -0.071168, 0.813507)
-bones/30/rotation = Quaternion(0.477563, -0.183037, 0.0627148, 0.857029)
-bones/31/rotation = Quaternion(0.631268, 0.137664, 0.0081931, 0.763206)
-
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_epg6k")
@@ -1549,7 +1527,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.9, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.9, 0)
 
 [node name="CollisionShape3D" parent="ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0960661, 0.109467, 0.0803223)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096, -0.016, 0.08)
 shape = SubResource("BoxShape3D_jmcll")
 
 [node name="PlayerDropAttackArea" parent="ArmadilloGFX/PlayerAttackAreas" instance=ExtResource("2_jmcll")]

@@ -45,7 +45,7 @@ func disable_all_attack_areas() -> void:
 
 var is_ball: bool = false
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("input_ball") and not is_movment3D:
+	if Input.is_action_just_pressed("input_ball") and not is_movment3D and SkillManager.is_ball_unlcoked:
 		transform_to_ball()
 	if can_change_movement_strategy and Input.is_action_just_pressed("input_change_state"):
 		change_movment_strategy()

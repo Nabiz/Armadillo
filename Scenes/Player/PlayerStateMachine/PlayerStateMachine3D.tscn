@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfmid7wfljjsa"]
+[gd_scene load_steps=9 format=3 uid="uid://cfmid7wfljjsa"]
 
 [ext_resource type="Script" uid="uid://cybhsmpvf73dr" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStateMachine3D.gd" id="1_y1ole"]
 [ext_resource type="Script" uid="uid://beiepeayq81e4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/WalkPlayerState3D.gd" id="2_wmhvx"]
 [ext_resource type="Script" uid="uid://c0nh2y0k0l7ex" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/IdlePlayerState3D.gd" id="3_wmhvx"]
 [ext_resource type="Script" uid="uid://0cop52w7u81q" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/JumpPlayerState3D.gd" id="4_mfsda"]
 [ext_resource type="Script" uid="uid://bj6q2jp8bxgp" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/FallPlayerState3D.gd" id="5_5mepl"]
+[ext_resource type="Script" uid="uid://b1va068364f6p" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/AttackPlayerState3D.gd" id="6_mawuk"]
+[ext_resource type="Script" uid="uid://buvam47xnt06n" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/AirAttackPlayerState3D.gd" id="7_axjnb"]
+[ext_resource type="Script" uid="uid://cwru40vsdh4bl" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/DropAttackPlayerState3D.gd" id="8_fulwe"]
 
 [node name="PlayerStateMachine3D" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_y1ole")
@@ -22,7 +25,19 @@ script = ExtResource("4_mfsda")
 [node name="Fall3D" type="Node" parent="."]
 script = ExtResource("5_5mepl")
 
+[node name="Attack3D" type="Node" parent="."]
+script = ExtResource("6_mawuk")
+
+[node name="AirAttack3D" type="Node" parent="."]
+script = ExtResource("7_axjnb")
+
+[node name="DropAttack3D" type="Node" parent="."]
+script = ExtResource("8_fulwe")
+
 [connection signal="state_changing" from="Walk3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Idle3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Jump3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Fall3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Attack3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="AirAttack3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="DropAttack3D" to="." method="transit_to_new_state"]

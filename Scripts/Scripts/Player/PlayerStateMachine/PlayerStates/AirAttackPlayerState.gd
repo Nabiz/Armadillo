@@ -23,7 +23,7 @@ func enter() -> void:
 		player.velocity.x = player.air_attack_speed
 	else:
 		player.velocity.x = -player.air_attack_speed
-	player.animation.speed_scale = 0.5
+	player.animation.speed_scale = 1.5
 	player.animation.play("AirAttack")
 
 func exit() -> void:

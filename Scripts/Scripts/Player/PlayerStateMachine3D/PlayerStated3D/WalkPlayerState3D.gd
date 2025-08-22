@@ -18,13 +18,14 @@ func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_select"):
 		emit_signal("state_changing", JumpPlayerState3D.instance)
 	#
-	#elif Input.is_action_just_pressed("input_attack"):
-		#emit_signal("state_changing", AttackPlayerState.instance)
+	elif Input.is_action_just_pressed("input_attack"):
+		emit_signal("state_changing", AttackPlayerState3D.instance)
 	
 
 
 func enter() -> void:
-	AirAttackPlayerState.instance.enabled = true
+	if SkillManager.is_air_attack_unlocked:
+		AirAttackPlayerState3D.instance.enabled = true
 	player.animation.play("Walk")
 
 func exit() -> void:
@@ -59,9 +60,9 @@ func physics_update(_delta: float) -> void:
 	#else:
 		#player.set_forrward_wallrun_raycast_direction(raycast_vector_right)
 	#
-	#if not p.is_on_floor():
-		#emit_signal("state_changing", FallPlayerState.instance)
-	#
+	if not p.is_on_floor():
+		emit_signal("state_changing", FallPlayerState3D.instance)
+	
 	if abs(input_dir.length_squared()) < 0.01:
 		emit_signal("state_changing", IdlePlayerState3D.instance)
 		return
