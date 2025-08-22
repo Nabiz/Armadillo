@@ -3,8 +3,8 @@ class_name WalkPlayerState
 
 static var instance: WalkPlayerState
 
-@onready var raycast_vector_right := Vector3(0.7, 0.0, 0.0)
-@onready var raycast_vector_left := Vector3(-0.7, 0.0, 0.0)
+@onready var raycast_vector_right: Vector3 = Vector3(0.7, 0.0, 0.0)
+@onready var raycast_vector_left: Vector3 = Vector3(-0.7, 0.0, 0.0)
 
 func _enter_tree() -> void:
 	instance = self
@@ -24,7 +24,7 @@ func handle_input(_event: InputEvent) -> void:
 
 func enter() -> void:
 	if SkillManager.is_air_attack_unlocked:
-		AirAttackPlayerState3D.instance.enabled = true
+		AirAttackPlayerState.instance.enabled = true
 	player.animation.play("Walk")
 
 func exit() -> void:

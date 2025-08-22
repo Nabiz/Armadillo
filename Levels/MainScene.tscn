@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=17 format=3 uid="uid://c15bqah4mq85p"]
 
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="4_ptrn6"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b3pure6l7node" path="res://Scenes/Props/SpawnPoint.tscn" id="10_v8p1f"]
 [ext_resource type="PackedScene" uid="uid://brfhehoane2be" path="res://Scenes/Props/ChangeMovementStrategyArea.tscn" id="12_71tao"]
 [ext_resource type="PackedScene" uid="uid://bff2uhp1ce6wy" path="res://Scenes/Props/RunWall.tscn" id="12_ptrn6"]
-[ext_resource type="Script" uid="uid://bcjr7tcuqngyq" path="res://Scripts/temp/cameraFar.gd" id="13_71tao"]
 [ext_resource type="PackedScene" uid="uid://0w114pdoh04x" path="res://Scenes/Props/UnlockSkillArea.tscn" id="13_lxbb3"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ptrn6"]
@@ -25,9 +24,6 @@ points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048,
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lxbb3"]
 points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048, -0.690431, 0.519048, -0.509524, -0.502208, -0.488962, 0.498486, 0.509524, -0.490394, 0.519048, -0.502208, -0.488962, -0.488962, 0.414181, -0.395149, -0.509524, -0.709524, 0.519048, 0.519048, -0.709524, 0.519048, -0.509524, 0.414181, -0.395149, 0.519048, -0.614181, 0.46186, -0.509524, -0.614181, 0.46186, 0.519048, 0.0714733, -0.109513, -0.509524)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ptrn6"]
-size = Vector3(53.9475, 22.4589, 12.2239)
 
 [node name="MainScene" type="Node3D"]
 
@@ -48,28 +44,7 @@ metadata/_editor_floor_ = Vector3(0, -9, 0)
 transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.00940453, 0.979359, 0.20191, 0.326874, -0.193837, 0.924976, -13.6703, 2.30046, 3.60594)
 
 [node name="Coin" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.041, 1.92017, 0)
-
-[node name="Coin4" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1589, 3.44239, 0)
-
-[node name="Coin5" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7776, 2.11063, 2.35215)
-
-[node name="Coin6" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7776, 0.90892, 4.22015)
-
-[node name="Coin7" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7776, 1.10174, 2.4393)
-
-[node name="Coin8" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7776, 0.812894, 5.53445)
-
-[node name="Coin2" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83875, 5.01921, 0)
-
-[node name="Coin3" parent="." instance=ExtResource("3_rpqi1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06022, 3.27611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13495, 1.92017, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_ptrn6")
@@ -82,9 +57,6 @@ transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 9.26552, 3.58999, 0)
 
 [node name="DestroyableStaticBody3" parent="." instance=ExtResource("7_lljjv")]
 transform = Transform3D(-8.74228e-08, 4, 0, -2, -1.74846e-07, 0, 0, 0, 2, 16.5048, -0.314824, -0.153153)
-
-[node name="Enemy" parent="." instance=ExtResource("8_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.15843, 2.00519, 0)
 
 [node name="Enemy3" parent="." instance=ExtResource("8_5eubm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1492, 2.00519, 0)
@@ -165,14 +137,6 @@ mesh = SubResource("PrismMesh_ptrn6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa/MeshInstance3D5/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_lxbb3")
 
-[node name="Area3D2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0744, -9.22957, 0)
-script = ExtResource("13_71tao")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0972, -7.2999, -1.20911)
-shape = SubResource("BoxShape3D_ptrn6")
-
 [node name="ChangeMovementStrategyArea" parent="." instance=ExtResource("12_71tao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7024, 1, 0)
 
@@ -194,6 +158,3 @@ skill_to_unlock = 1
 [node name="UnlockSkillArea5" parent="." instance=ExtResource("13_lxbb3")]
 transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -1.13749, 5.07785, -0.341121)
 skill_to_unlock = 4
-
-[connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D2" to="Area3D2" method="_on_body_exited"]

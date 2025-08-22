@@ -105,7 +105,7 @@ func disable_movement_strategy_change() -> void:
 	tooltip.visible = false
 	can_change_movement_strategy = false
 
-func change_movment_strategy():
+func change_movment_strategy() -> void:
 	if is_movment3D:
 		is_movment3D = false
 		state_machine_3d.process_mode = Node.PROCESS_MODE_DISABLED

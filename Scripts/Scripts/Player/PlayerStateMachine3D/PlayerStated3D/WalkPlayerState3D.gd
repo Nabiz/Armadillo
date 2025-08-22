@@ -3,8 +3,8 @@ class_name WalkPlayerState3D
 
 static var instance: WalkPlayerState3D
 
-@onready var raycast_vector_right := Vector3(0.7, 0.0, 0.0)
-@onready var raycast_vector_left := Vector3(-0.7, 0.0, 0.0)
+@onready var raycast_vector_right: Vector3 = Vector3(0.7, 0.0, 0.0)
+@onready var raycast_vector_left: Vector3 = Vector3(-0.7, 0.0, 0.0)
 
 func _enter_tree() -> void:
 	instance = self
