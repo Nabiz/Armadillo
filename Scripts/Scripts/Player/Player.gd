@@ -83,11 +83,8 @@ func take_damage(ammount: int) -> void:
 func resurect() -> void:
 	get_gui().lose_hearts(-3)
 
-func set_forrward_wallrun_raycast_direction(target_position: Vector3) -> void:
-	forrward_wall_raycast.target_position = target_position
-
 func has_wall_before() -> bool:
-	#forrward_wall_raycast.force_raycast_update()
+	forrward_wall_raycast.force_raycast_update()
 	return forrward_wall_raycast.is_colliding()
 
 @export_category("FSM")

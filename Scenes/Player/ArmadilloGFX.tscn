@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyn4q0mh65exa"]
+[gd_scene load_steps=12 format=3 uid="uid://cyn4q0mh65exa"]
 
 [ext_resource type="PackedScene" uid="uid://2226et0nphr5" path="res://Assets/Player/Model/ArmadilloModelFix.glb" id="1_u48bp"]
 
@@ -1415,6 +1415,9 @@ tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = PackedFloat32Array(0, 1, 0.584079, 0.0693208, -0.0348077, 0.807982, 0.0333333, 1, 0.584079, 0.0693208, -0.0348077, 0.807982, 0.0666667, 1, 0.640334, 0.0641391, -0.0416887, 0.764278, 0.1, 1, 0.807222, -0.381603, 0.178985, 0.413203, 0.133333, 1, -0.0562291, 0.168538, 0.112653, 0.977621, 0.166667, 1, 0.343405, 0.0643471, -0.0236355, 0.936682, 0.233333, 1, 0.342985, 0.0643348, -0.0236155, 0.936838, 0.266667, 1, 0.340764, 0.06427, -0.0235099, 0.937655, 0.3, 1, 0.345953, 0.0644211, -0.0237566, 0.935736, 0.333333, 1, 0.379668, 0.10583, -0.0103059, 0.918992, 0.366667, 1, 0.548985, 0.269631, -0.00291831, 0.791142, 0.4, 1, 0.549496, 0.162949, -0.0184658, 0.819244, 0.433333, 1, 0.384703, 0.0534914, -0.0301643, 0.920995, 0.466667, 1, 0.351569, 0.0645825, -0.0240234, 0.933623, 0.5, 1, 0.475287, 0.0676124, -0.0298301, 0.876722, 0.533333, 1, 0.51423, 0.0683376, -0.0316271, 0.85434, 0.566667, 1, 0.364394, 0.064944, -0.0246317, 0.928651, 0.6, 1, 0.399339, 0.0658752, -0.026282, 0.914056, 0.633333, 1, 0.475321, 0.067613, -0.0298316, 0.876703, 0.666667, 1, 0.584079, 0.0693208, -0.0348076, 0.807982)
 
+[sub_resource type="Animation" id="Animation_8kavw"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vst7l"]
 _data = {
 &"AirAttack": SubResource("Animation_ka47s"),
@@ -1423,11 +1426,15 @@ _data = {
 &"Fall": SubResource("Animation_u48bp"),
 &"Idle": SubResource("Animation_v34xi"),
 &"Jump": SubResource("Animation_pc55c"),
+&"RESET": SubResource("Animation_8kavw"),
 &"Roll": SubResource("Animation_rf82w"),
 &"Walk": SubResource("Animation_l8s18")
 }
 
 [node name="ArmadilloGFX" instance=ExtResource("1_u48bp")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/0/position = Vector3(-4.96429, 19.9528, -64.5019)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfmid7wfljjsa"]
+[gd_scene load_steps=10 format=3 uid="uid://cfmid7wfljjsa"]
 
 [ext_resource type="Script" uid="uid://cybhsmpvf73dr" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStateMachine3D.gd" id="1_y1ole"]
 [ext_resource type="Script" uid="uid://beiepeayq81e4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/WalkPlayerState3D.gd" id="2_wmhvx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b1va068364f6p" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/AttackPlayerState3D.gd" id="6_mawuk"]
 [ext_resource type="Script" uid="uid://buvam47xnt06n" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/AirAttackPlayerState3D.gd" id="7_axjnb"]
 [ext_resource type="Script" uid="uid://cwru40vsdh4bl" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/DropAttackPlayerState3D.gd" id="8_fulwe"]
+[ext_resource type="Script" uid="uid://dduqvsb1kq1o4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStated3D/ForrwardWallrunPlayerState3D.gd" id="9_iyrek"]
 
 [node name="PlayerStateMachine3D" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_y1ole")
@@ -34,6 +35,9 @@ script = ExtResource("7_axjnb")
 [node name="DropAttack3D" type="Node" parent="."]
 script = ExtResource("8_fulwe")
 
+[node name="ForrwardWallRun3D" type="Node" parent="."]
+script = ExtResource("9_iyrek")
+
 [connection signal="state_changing" from="Walk3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Idle3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Jump3D" to="." method="transit_to_new_state"]
@@ -41,3 +45,4 @@ script = ExtResource("8_fulwe")
 [connection signal="state_changing" from="Attack3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="AirAttack3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="DropAttack3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="ForrwardWallRun3D" to="." method="transit_to_new_state"]

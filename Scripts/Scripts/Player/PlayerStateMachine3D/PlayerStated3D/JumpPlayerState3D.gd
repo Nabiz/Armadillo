@@ -45,10 +45,6 @@ func physics_update(delta: float) -> void:
 	#else:
 		#p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
 	
-	#if p.direction.x < 0:
-		#player.set_forrward_wallrun_raycast_direction(raycast_vector_left)
-	#else:
-		#player.set_forrward_wallrun_raycast_direction(raycast_vector_right)
 	#
 	#if not p.is_on_floor():
 		#emit_signal("state_changing", FallPlayerState.instance)

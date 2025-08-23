@@ -1,7 +1,7 @@
-extends PlayerState
-class_name ForrwardWallrunPlayerState
+extends PlayerState3D
+class_name ForrwardWallrunPlayerState3D
 
-static var instance: ForrwardWallrunPlayerState
+static var instance: ForrwardWallrunPlayerState3D
 
 var wallrun_time: float = 0.0
 var max_wallrun_time: float = 0.6
@@ -29,7 +29,7 @@ func exit() -> void:
 		#player.gfx.rotate(Vector3.FORWARD, PI/6)
 	#else:
 		#player.gfx.rotate(Vector3.FORWARD, -PI/6)
-	#player.gfx.position = Vector3.ZERO
+	player.gfx.position = Vector3.ZERO
 	player.velocity = Vector3.ZERO
 	player.animation.speed_scale = 1.0
 	player.animation.play("RESET")
@@ -37,10 +37,10 @@ func exit() -> void:
 
 func update(delta: float) -> void:
 	if not player.has_wall_before() or not Input.is_action_pressed("input_wallrun"):
-		emit_signal("state_changing", FallPlayerState.instance)
+		emit_signal("state_changing", FallPlayerState3D.instance)
 	wallrun_time += delta
 	if wallrun_time >= max_wallrun_time:
-		emit_signal("state_changing", FallPlayerState.instance)
+		emit_signal("state_changing", FallPlayerState3D.instance)
 
 func physics_update(_delta: float) -> void:
 	player.velocity.y = player.speed

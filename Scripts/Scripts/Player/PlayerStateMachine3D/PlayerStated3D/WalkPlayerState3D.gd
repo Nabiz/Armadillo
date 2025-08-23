@@ -11,9 +11,9 @@ func _enter_tree() -> void:
 
 func handle_input(_event: InputEvent) -> void:
 	pass
-	#if Input.is_action_pressed("input_wallrun"):
-		#if player.has_wall_before():
-			#emit_signal("state_changing", ForrwardWallrunPlayerState.instance)
+	if Input.is_action_pressed("input_wallrun"):
+		if player.has_wall_before():
+			emit_signal("state_changing", ForrwardWallrunPlayerState3D.instance)
 	#
 	if Input.is_action_just_pressed("ui_select"):
 		emit_signal("state_changing", JumpPlayerState3D.instance)
@@ -55,10 +55,6 @@ func physics_update(_delta: float) -> void:
 	#else:
 		#p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
 	
-	#if p.direction.x < 0:
-		#player.set_forrward_wallrun_raycast_direction(raycast_vector_left)
-	#else:
-		#player.set_forrward_wallrun_raycast_direction(raycast_vector_right)
 	#
 	if not p.is_on_floor():
 		emit_signal("state_changing", FallPlayerState3D.instance)
