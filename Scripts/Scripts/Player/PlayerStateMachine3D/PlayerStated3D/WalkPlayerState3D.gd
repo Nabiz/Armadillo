@@ -12,10 +12,10 @@ func _enter_tree() -> void:
 func handle_input(_event: InputEvent) -> void:
 	pass
 	if Input.is_action_pressed("input_wallrun"):
-		if player.has_wall_before():
+		if player.has_wall_on_front():
 			emit_signal("state_changing", ForrwardWallrunPlayerState3D.instance)
 	#
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("input_jump"):
 		emit_signal("state_changing", JumpPlayerState3D.instance)
 	#
 	elif Input.is_action_just_pressed("input_attack"):

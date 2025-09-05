@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("ui_right"):
 		apply_torque(torque_accelarion*Vector3.FORWARD)
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("input_jump"):
 		apply_impulse(jump_force * Vector3.UP)
 
 func activate_ball() -> void:

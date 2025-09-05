@@ -10,18 +10,18 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func enter() -> void:
-	if abs(player.velocity.x) < 0.5:
-		emit_signal("state_changing", FallPlayerState.instance)
-		return
+	#if abs(player.velocity.x) < 0.5:
+		#emit_signal("state_changing", FallPlayerState.instance)
+		#return
 
 	enabled = false
 	player.disable_destroyable_collision()
 	
 	player.velocity.y = 0
 
-	if player.velocity.x >= 0:
+	if player.velocity.x >= 0.1:
 		player.velocity.x = player.air_attack_speed
-	else:
+	elif player.velocity.x <= -0.1:
 		player.velocity.x = -player.air_attack_speed
 	player.animation.speed_scale = 1.5
 	player.animation.play("AirAttack")
@@ -38,5 +38,6 @@ func update(_delta: float) -> void:
 		emit_signal("state_changing", FallPlayerState.instance)
 
 func physics_update(_delta: float) -> void:
-	if abs(player.velocity.x) < 0.1:
-		emit_signal("state_changing", FallPlayerState.instance)
+	pass
+	#if abs(player.velocity.x) < 0.1:
+		#emit_signal("state_changing", FallPlayerState.instance)

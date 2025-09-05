@@ -17,6 +17,8 @@ class_name Player
 @export var attack_areas: Array[PlayerAttackArea]
 
 @export var forrward_wall_raycast: RayCast3D
+@export var left_wall_raycast: RayCast3D
+@export var right_wall_raycast: RayCast3D
 
 @export_category("Ball")
 @export var player_ball: PlayerBall
@@ -83,9 +85,17 @@ func take_damage(ammount: int) -> void:
 func resurect() -> void:
 	get_gui().lose_hearts(-3)
 
-func has_wall_before() -> bool:
+func has_wall_on_front() -> bool:
 	forrward_wall_raycast.force_raycast_update()
 	return forrward_wall_raycast.is_colliding()
+
+func has_wall_on_right_side() -> bool:
+	right_wall_raycast.force_raycast_update()
+	return right_wall_raycast.is_colliding()
+
+func has_wall_on_left_side() -> bool:
+	left_wall_raycast.force_raycast_update()
+	return left_wall_raycast.is_colliding()
 
 @export_category("FSM")
 @export var tooltip: Label

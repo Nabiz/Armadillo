@@ -10,7 +10,7 @@ func handle_input(_event: InputEvent) -> void:
 	if Input.get_axis("ui_left", "ui_right"):
 		emit_signal("state_changing", WalkPlayerState.instance)
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("input_jump"):
 		emit_signal("state_changing", JumpPlayerState.instance)
 		
 	if Input.is_action_just_pressed("input_attack"):
