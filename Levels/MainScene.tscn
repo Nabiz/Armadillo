@@ -30,7 +30,7 @@ points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048,
 [node name="MainScene" type="Node3D"]
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.6351, -0.580046, -0.00171566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.6351, 1.35271, -0.00171566)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -594,6 +594,10 @@ transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, 
 
 [node name="UnlockSkillArea4" parent="." instance=ExtResource("13_lxbb3")]
 transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, 4.17543, 0.856737, -0.341121)
+skill_to_unlock = 1
+
+[node name="UnlockSkillArea7" parent="." instance=ExtResource("13_lxbb3")]
+transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -70.6594, 0.856737, -0.341121)
 skill_to_unlock = 1
 
 [node name="UnlockSkillArea5" parent="." instance=ExtResource("13_lxbb3")]

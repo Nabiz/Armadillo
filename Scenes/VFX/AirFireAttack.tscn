@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://crot7cc4iex8y"]
+
+[ext_resource type="Shader" uid="uid://67tqb7fqdacm" path="res://Scripts/Shaders/FireAttack.gdshader" id="1_l6jbq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t26db"]
+render_priority = 0
+shader = ExtResource("1_l6jbq")
+shader_parameter/top_radius = 0.0
+shader_parameter/bottom_radius = 0.02
+shader_parameter/center_radius = 0.45
+shader_parameter/center_position = 0.157
+shader_parameter/cylinder_height = 5.0
+shader_parameter/bottom_curve = 0.4
+shader_parameter/_vibrate_amplitude = 0.0
+shader_parameter/_vibrate_frequency = 150.0
+shader_parameter/_speed = 1.0
+shader_parameter/_scale = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fk5o5"]
+rings = 48
+cap_top = false
+
+[node name="FireAtackVFX" type="MeshInstance3D"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_t26db")
+mesh = SubResource("CylinderMesh_fk5o5")

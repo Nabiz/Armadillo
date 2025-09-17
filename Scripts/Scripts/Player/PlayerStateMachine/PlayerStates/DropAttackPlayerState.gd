@@ -15,6 +15,7 @@ func enter() -> void:
 	player.animation.play("DropAttack")
 
 func exit() -> void:
+	print("DUPA2d")
 	player.disable_all_attack_areas()
 
 func update(_delta: float) -> void:

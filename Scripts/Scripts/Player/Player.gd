@@ -20,8 +20,10 @@ class_name Player
 @export var left_wall_raycast: RayCast3D
 @export var right_wall_raycast: RayCast3D
 
-@export_category("Ball")
+@export_category("Transformation")
 @export var player_ball: PlayerBall
+@export var transformation_vfx: GPUParticles3D
+@export var transformation_timer: CooldownTimer
 
 var direction: Vector3 = Vector3.ZERO
 var can_move_on_z_axis: bool = false
@@ -46,35 +48,41 @@ func disable_all_attack_areas() -> void:
 
 
 var is_ball: bool = false
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("input_ball") and not is_movment3D and SkillManager.is_ball_unlcoked:
-		transform_to_ball()
+		transform_to_ball(delta)
 	if can_change_movement_strategy and Input.is_action_just_pressed("input_change_state"):
 		change_movment_strategy()
 
-func transform_to_ball() -> void:
-	if not is_ball:
-		collision.disabled = true
-		gfx.visible = false
-		is_ball = true
-		player_ball.global_position = global_position + Vector3(0.0, 0.5, 0.0)
-		player_ball.ball_camera.global_position = camera.global_position
-		player_ball.activate_ball()
-		
-		state_machine.set_physics_process(false)
-		state_machine.set_process(false)
-		velocity = Vector3.ZERO
-		state_machine.transit_to_new_state(FallPlayerState.instance)
-	else:
-		is_ball = false
-		player_ball.deactivate_ball()
-		global_position = player_ball.global_position - Vector3(0.0, 0.5, 0.0)
-		state_machine.set_physics_process(true)
-		state_machine.set_process(true)
-		state_machine.transit_to_new_state(FallPlayerState.instance)
-		
-		collision.disabled = false
-		gfx.visible = true
+func transform_to_ball(delta: float) -> void:
+	if not transformation_timer.on_cooldown:
+		transformation_timer.start_cooldown()
+		if not is_ball:
+			transformation_vfx.position = Vector3(0.0,0.6,0.0) + velocity * delta
+			transformation_vfx.emitting = true
+			collision.disabled = true
+			gfx.visible = false
+			is_ball = true
+			player_ball.global_position = global_position + Vector3(0.0, 0.5, 0.0)
+			player_ball.ball_camera.global_position = camera.global_position
+			player_ball.activate_ball()
+			
+			state_machine.set_physics_process(false)
+			state_machine.set_process(false)
+			velocity = Vector3.ZERO
+			state_machine.transit_to_new_state(FallPlayerState.instance)
+		else:
+			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.linear_velocity * delta
+			transformation_vfx.emitting = true
+			is_ball = false
+			player_ball.deactivate_ball()
+			global_position = player_ball.global_position - Vector3(0.0, 0.5, 0.0)
+			state_machine.set_physics_process(true)
+			state_machine.set_process(true)
+			state_machine.transit_to_new_state(FallPlayerState.instance)
+			
+			collision.disabled = false
+			gfx.visible = true
 
 func take_damage(ammount: int) -> void:
 	get_gui().lose_hearts(ammount)

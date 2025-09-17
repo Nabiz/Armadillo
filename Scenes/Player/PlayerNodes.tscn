@@ -1,28 +1,90 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6hhn5cyqee3"]
+[gd_scene load_steps=14 format=3 uid="uid://b6hhn5cyqee3"]
 
 [ext_resource type="Script" uid="uid://b4ogtwd0k50ur" path="res://Scripts/Scripts/Camera/BallCamera.gd" id="1_jmqii"]
 [ext_resource type="PackedScene" uid="uid://naguplp0cuib" path="res://Scenes/Player/PlayerBall.tscn" id="2_03plg"]
 [ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Scenes/Player/Player.tscn" id="3_6nma4"]
+[ext_resource type="Shader" uid="uid://3mh1fp1yc8v7" path="res://Scripts/Shaders/TransformationSmoke.gdshader" id="4_03plg"]
+[ext_resource type="Shader" uid="uid://b4fektppaten6" path="res://Scripts/Shaders/TransformationSmokeOutline.gdshader" id="4_6nma4"]
 [ext_resource type="PackedScene" uid="uid://r61gesnivgak" path="res://Scenes/Interface/GUI.tscn" id="4_rm4y0"]
+[ext_resource type="Script" uid="uid://bva5ovqvcwidp" path="res://Scripts/Scripts/Utils/CooldownTimer.gd" id="6_rm4y0"]
+
+[sub_resource type="Curve" id="Curve_6nma4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504545, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rm4y0"]
+curve = SubResource("Curve_6nma4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6nma4"]
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 4, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_rm4y0")
+anim_offset_min = 0.5
+anim_offset_max = 0.5
+turbulence_noise_strength = 5.43
+turbulence_noise_scale = 11.78
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws56d"]
+render_priority = 0
+shader = ExtResource("4_6nma4")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 3.0
+shader_parameter/displacementStrength = 0.1
+shader_parameter/displacementSpeed = 0.1
+shader_parameter/noiseDensity = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rm4y0"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ws56d")
+shader = ExtResource("4_03plg")
+shader_parameter/smoke_color = Color(0.808998, 0.808998, 0.808998, 1)
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0.731142, 0.743964, 0.908211, 1)
+shader_parameter/displacementStrength = 0.1
+shader_parameter/displacementSpeed = 0.1
+shader_parameter/noiseDensity = 8.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ws56d"]
+material = SubResource("ShaderMaterial_rm4y0")
+radius = 0.2
+height = 0.4
 
 [node name="PlayerNodes" type="Node3D"]
 
 [node name="BallCamera3D" type="Camera3D" parent="." node_paths=PackedStringArray("object_to_look_at")]
-transform = Transform3D(1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, 1, 0.045534, 2, 6)
+transform = Transform3D(1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, 1, 0.046, 2, 6)
 script = ExtResource("1_jmqii")
 object_to_look_at = NodePath("../PlayerBall")
 
 [node name="PlayerBall" parent="." node_paths=PackedStringArray("ball_camera", "player") instance=ExtResource("2_03plg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102282, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0)
+visible = false
 collision_mask = 3
 ball_camera = NodePath("../BallCamera3D")
 player = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "tooltip") instance=ExtResource("3_6nma4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "transformation_vfx", "transformation_timer", "tooltip") instance=ExtResource("3_6nma4")]
 gui = NodePath("../GUI")
 player_ball = NodePath("../PlayerBall")
+transformation_vfx = NodePath("TransformationSmokeVFX")
+transformation_timer = NodePath("TransformationCooldownTimer")
 tooltip = NodePath("../Tooltip/Label")
+
+[node name="TransformationSmokeVFX" type="GPUParticles3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600395, 0)
+emitting = false
+amount = 1
+one_shot = true
+preprocess = 0.4
+process_material = SubResource("ParticleProcessMaterial_6nma4")
+draw_pass_1 = SubResource("SphereMesh_ws56d")
+
+[node name="TransformationCooldownTimer" type="Timer" parent="Player"]
+wait_time = 2.0
+one_shot = true
+script = ExtResource("6_rm4y0")
 
 [node name="GUI" parent="." instance=ExtResource("4_rm4y0")]
 

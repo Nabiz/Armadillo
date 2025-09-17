@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdj7xrynbb22t"]
+[gd_scene load_steps=26 format=3 uid="uid://cdj7xrynbb22t"]
 
 [ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Scripts/Scripts/Player/Player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://vdqmc7bu7mhy" path="res://Scenes/Player/AttackAreas/PlayerAttackArea.tscn" id="2_jmcll"]
 [ext_resource type="PackedScene" uid="uid://cyn4q0mh65exa" path="res://Scenes/Player/ArmadilloGFX.tscn" id="2_q3lat"]
+[ext_resource type="PackedScene" uid="uid://crot7cc4iex8y" path="res://Scenes/VFX/AirFireAttack.tscn" id="4_4wape"]
 [ext_resource type="PackedScene" uid="uid://cfmid7wfljjsa" path="res://Scenes/Player/PlayerStateMachine/PlayerStateMachine3D.tscn" id="5_4wape"]
 [ext_resource type="PackedScene" uid="uid://cgi3en7lguwy3" path="res://Scenes/Player/PlayerStateMachine/PlayerStateMachine.tscn" id="5_jmcll"]
+[ext_resource type="Shader" uid="uid://67tqb7fqdacm" path="res://Scripts/Shaders/FireAttack.gdshader" id="5_t26db"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1305s"]
 radius = 0.675552
@@ -223,16 +225,26 @@ tracks/29/path = NodePath("PlayerAttackAreas/PlayerAirAttackArea")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"enable_attack_area"
 }, {
 "args": [],
+"method": &"show_vfx"
+}, {
+"args": [],
 "method": &"disable_attack_area"
 }]
 }
+tracks/30/type = "scale_3d"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("PlayerAttackAreas/PlayerAirAttackArea/FireAtackVFX")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = PackedFloat32Array(0.1, 1, 0, 0, 0, 0.5, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_4wape"]
 resource_name = "Armature|mixamo_com|Layer0_001"
@@ -560,14 +572,14 @@ tracks/19/path = NodePath("PlayerAttackAreas/PlayerDropAttackArea")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 0.866667),
+"times": PackedFloat32Array(0, 0.0333333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"enable_attack_area"
 }, {
 "args": [],
-"method": &"disable_attack_area"
+"method": &"show_vfx"
 }]
 }
 
@@ -1605,6 +1617,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAttackAreas/PlayerAirAttackArea/FireAtackVFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAttackAreas/PlayerAirAttackArea/FireAtackVFX:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
 
 [sub_resource type="Animation" id="Animation_esmjy"]
 resource_name = "RightWallrun"
@@ -2219,6 +2250,24 @@ size = Vector3(0.954223, 0.905805, 0.408)
 [sub_resource type="SphereShape3D" id="SphereShape3D_jmcll"]
 radius = 0.6
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fk5o5"]
+render_priority = 0
+shader = ExtResource("5_t26db")
+shader_parameter/top_radius = 0.0
+shader_parameter/bottom_radius = 0.2
+shader_parameter/center_radius = 0.946
+shader_parameter/center_position = 0.157
+shader_parameter/cylinder_height = 4.771
+shader_parameter/bottom_curve = 0.4
+shader_parameter/_vibrate_amplitude = 0.0
+shader_parameter/_vibrate_frequency = 150.0
+shader_parameter/_speed = 1.0
+shader_parameter/_scale = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_825xp"]
+rings = 48
+cap_top = false
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
 collision_mask = 3
 script = ExtResource("1_xhfnw")
@@ -2245,35 +2294,26 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/position = Vector3(0.841249, 3.65089, -53.6908)
-bones/0/rotation = Quaternion(-0.654315, -0.079954, 0.00218828, 0.75198)
-bones/1/rotation = Quaternion(0.103133, 0.134778, 0.045844, 0.984427)
-bones/2/rotation = Quaternion(-0.0296225, 0.0156076, 0.0116194, 0.999372)
-bones/3/rotation = Quaternion(-0.0292522, 0.0156285, 0.0105221, 0.999395)
-bones/4/rotation = Quaternion(0.0493642, -0.0203323, -0.0277026, 0.99819)
-bones/5/rotation = Quaternion(-0.171513, -0.0576759, 0.00756736, 0.983463)
-bones/7/rotation = Quaternion(-0.612906, -0.406784, 0.518394, -0.436051)
-bones/8/rotation = Quaternion(0.351899, 0.382543, -0.346687, 0.780792)
-bones/9/rotation = Quaternion(0.0188082, 0.000784949, 0.59031, 0.806957)
-bones/10/rotation = Quaternion(0.0169725, -0.0868418, -0.0337474, 0.995506)
-bones/11/rotation = Quaternion(0.0516896, 0.0143143, -0.00758544, 0.998532)
-bones/12/rotation = Quaternion(-0.00166913, 0.0219787, -0.20529, 0.978453)
-bones/13/rotation = Quaternion(-0.0210776, -0.0186534, 0.0384769, 0.998863)
-bones/15/rotation = Quaternion(0.595413, -0.411383, 0.536695, 0.433826)
-bones/16/rotation = Quaternion(0.331096, 0.0595048, -0.116893, 0.934436)
-bones/17/rotation = Quaternion(0.016919, -0.000205396, -0.721815, 0.69188)
-bones/18/rotation = Quaternion(-0.182638, 0.125294, -0.0322496, 0.974631)
-bones/19/rotation = Quaternion(0.0216161, -0.740855, -0.0177026, 0.671083)
-bones/20/rotation = Quaternion(0.387371, -0.0560859, -0.084837, 0.916297)
-bones/21/rotation = Quaternion(0.303146, 0.0105039, 0.0551099, 0.951291)
-bones/23/rotation = Quaternion(0.0695308, 0.52661, 0.84004, -0.110362)
-bones/24/rotation = Quaternion(-0.907404, -0.0789722, 0.0685899, 0.407033)
-bones/25/rotation = Quaternion(0.306742, 0.0955401, 0.163477, 0.932768)
-bones/26/rotation = Quaternion(0.343192, -0.0597933, 0.0261364, 0.936996)
-bones/28/rotation = Quaternion(-0.0614958, 0.00488073, 0.997537, -0.0333824)
-bones/29/rotation = Quaternion(-0.580926, -0.090065, 0.0541655, 0.807142)
-bones/30/rotation = Quaternion(0.798274, -0.114671, -0.166598, 0.567322)
-bones/31/rotation = Quaternion(0.584079, 0.0693208, -0.0348077, 0.807982)
+bones/0/position = Vector3(-8.95984, -7.93736, -45.9241)
+bones/0/rotation = Quaternion(-0.106737, 0.618421, 0.777666, -0.0373809)
+bones/1/rotation = Quaternion(0.295067, -0.0957552, 0.0472497, 0.949491)
+bones/2/rotation = Quaternion(-0.00256898, -0.0325685, 0.0233833, 0.999193)
+bones/3/rotation = Quaternion(-0.00194936, -0.0307943, 0.0264491, 0.999174)
+bones/8/rotation = Quaternion(0.213777, -0.607853, 0.128786, 0.753809)
+bones/9/rotation = Quaternion(0.0263509, 0.00054628, 0.827031, 0.561538)
+bones/11/position = Vector3(-9.86143e-06, 10.4223, -2.27241e-07)
+bones/11/rotation = Quaternion(-9.36434e-08, 0.0143339, 1.17417e-07, 0.999897)
+bones/15/rotation = Quaternion(0.663988, -0.332338, 0.531972, 0.407035)
+bones/16/rotation = Quaternion(0.166905, 0.38084, -0.371311, 0.8302)
+bones/17/rotation = Quaternion(0.0173632, -0.000199197, -0.740753, 0.671553)
+bones/23/rotation = Quaternion(-0.0121258, 0.741859, 0.605093, -0.288721)
+bones/24/rotation = Quaternion(-0.924532, -0.00101059, 0.0167183, 0.380737)
+bones/25/rotation = Quaternion(0.458761, 0.067095, -0.015764, 0.885883)
+bones/26/rotation = Quaternion(0.364557, -0.0655847, 0.0249565, 0.928533)
+bones/28/rotation = Quaternion(-0.0503018, 0.565302, 0.760722, 0.314968)
+bones/29/rotation = Quaternion(-0.686353, 0.0066683, 0.0662953, 0.72421)
+bones/30/rotation = Quaternion(0.381272, 0.0456736, -0.0330149, 0.922743)
+bones/31/rotation = Quaternion(0.342151, 0.0643106, -0.0235759, 0.937145)
 
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
@@ -2288,17 +2328,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.9, 0)
 
 [node name="PlayerAirAttackArea" parent="ArmadilloGFX/PlayerAttackAreas" instance=ExtResource("2_jmcll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.9, 0)
+visible = false
 
 [node name="CollisionShape3D" parent="ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0791113, -0.0504023, 0.08)
 shape = SubResource("BoxShape3D_jmcll")
 
+[node name="FireAtackVFX" parent="ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea" instance=ExtResource("4_4wape")]
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0.6, 0, 0)
+
 [node name="PlayerDropAttackArea" parent="ArmadilloGFX/PlayerAttackAreas" instance=ExtResource("2_jmcll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0218089, -0.213851, 0)
+visible = false
 
 [node name="CollisionShape3D" parent="ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0531671, 0)
 shape = SubResource("SphereShape3D_jmcll")
+
+[node name="FireAtackVFX" parent="ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea" instance=ExtResource("4_4wape")]
+transform = Transform3D(0.933333, 0, 0, 0, 0.933333, 0, 0, 0, 0.933333, 0, -0.62, 0)
+material_override = SubResource("ShaderMaterial_fk5o5")
+mesh = SubResource("CylinderMesh_825xp")
 
 [node name="PlayerMovementCheckAreas" type="Node3D" parent="ArmadilloGFX"]
 

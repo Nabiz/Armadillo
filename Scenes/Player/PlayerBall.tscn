@@ -1,20 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://naguplp0cuib"]
+[gd_scene load_steps=5 format=3 uid="uid://naguplp0cuib"]
 
 [ext_resource type="Script" uid="uid://ngexa0e5bkbv" path="res://Scripts/Scripts/Player/PlayerBall.gd" id="1_xdcgx"]
+[ext_resource type="PackedScene" uid="uid://wmovi17nibkf" path="res://Assets/Player/Model/Armadillo_Sphere.glb" id="2_walc5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xdcgx"]
 friction = 20.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o7n6k"]
 radius = 0.48
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdcgx"]
-albedo_color = Color(0.423529, 0.247059, 0.109804, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_walc5"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xdcgx"]
-size = Vector3(0.2, 0.2, 0.2)
 
 [node name="PlayerBall" type="RigidBody3D" node_paths=PackedStringArray("collision")]
 axis_lock_linear_z = true
@@ -27,10 +20,5 @@ collision = NodePath("CollisionShape3D")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_o7n6k")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_xdcgx")
-mesh = SubResource("SphereMesh_walc5")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552267, 0, 0)
-mesh = SubResource("BoxMesh_xdcgx")
+[node name="Armadillo_Sphere" parent="." instance=ExtResource("2_walc5")]
+transform = Transform3D(-2.53526e-08, 0, 0.58, 0, 0.58, 0, -0.58, 0, -2.53526e-08, 0.12, 0, 0)
