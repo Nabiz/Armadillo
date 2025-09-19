@@ -25,6 +25,13 @@ class_name Player
 @export var transformation_vfx: GPUParticles3D
 @export var transformation_timer: CooldownTimer
 
+@export_category("FSM")
+@export var tooltip: Label
+var is_movment3D: bool = false
+var can_change_movement_strategy: bool = false
+@export var state_machine_2d: PlayerStateMachine
+@export var state_machine_3d: PlayerStateMachine3D
+
 var direction: Vector3 = Vector3.ZERO
 var can_move_on_z_axis: bool = false
 
@@ -49,7 +56,7 @@ func disable_all_attack_areas() -> void:
 
 var is_ball: bool = false
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("input_ball") and not is_movment3D and SkillManager.is_ball_unlcoked:
+	if Input.is_action_just_pressed("input_ball") and SkillManager.is_ball_unlcoked:
 		transform_to_ball(delta)
 	if can_change_movement_strategy and Input.is_action_just_pressed("input_change_state"):
 		change_movment_strategy()
@@ -70,7 +77,8 @@ func transform_to_ball(delta: float) -> void:
 			state_machine.set_physics_process(false)
 			state_machine.set_process(false)
 			velocity = Vector3.ZERO
-			state_machine.transit_to_new_state(FallPlayerState.instance)
+			state_machine_2d.transit_to_new_state(FallPlayerState.instance)
+			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
 		else:
 			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.linear_velocity * delta
 			transformation_vfx.emitting = true
@@ -79,7 +87,8 @@ func transform_to_ball(delta: float) -> void:
 			global_position = player_ball.global_position - Vector3(0.0, 0.5, 0.0)
 			state_machine.set_physics_process(true)
 			state_machine.set_process(true)
-			state_machine.transit_to_new_state(FallPlayerState.instance)
+			state_machine_2d.transit_to_new_state(FallPlayerState.instance)
+			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
 			
 			collision.disabled = false
 			gfx.visible = true
@@ -105,13 +114,6 @@ func has_wall_on_left_side() -> bool:
 	left_wall_raycast.force_raycast_update()
 	return left_wall_raycast.is_colliding()
 
-@export_category("FSM")
-@export var tooltip: Label
-var is_movment3D: bool = false
-var can_change_movement_strategy: bool = false
-@export var state_machine_2d: PlayerStateMachine
-@export var state_machine_3d: PlayerStateMachine3D
-
 func enable_movement_strategy_change() -> void:
 	tooltip.visible = true
 	can_change_movement_strategy = true
@@ -120,13 +122,21 @@ func disable_movement_strategy_change() -> void:
 	tooltip.visible = false
 	can_change_movement_strategy = false
 
-func change_movment_strategy() -> void:
-	if is_movment3D:
+func _change_movement_strategy_to_2d() -> void:
 		is_movment3D = false
 		state_machine_3d.process_mode = Node.PROCESS_MODE_DISABLED
 		state_machine_2d.process_mode = Node.PROCESS_MODE_INHERIT
-		position.z = 0.0
-	else:
+		position.z = position.z - fmod(position.z, 5.0)
+		state_machine = state_machine_2d
+
+func _change_movement_strategy_to_3d() -> void:
 		is_movment3D = true
 		state_machine_2d.process_mode = Node.PROCESS_MODE_DISABLED
 		state_machine_3d.process_mode = Node.PROCESS_MODE_INHERIT
+		state_machine = state_machine_3d
+
+func change_movment_strategy() -> void:
+	if is_movment3D:
+		_change_movement_strategy_to_2d()
+	else:
+		_change_movement_strategy_to_3d()

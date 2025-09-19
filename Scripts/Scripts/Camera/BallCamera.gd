@@ -5,3 +5,4 @@ extends Camera3D
 func _process(_delta: float) -> void:
 	position.x = object_to_look_at.position.x
 	position.y = object_to_look_at.position.y + 1.5
+	position.z = object_to_look_at.position.z + 6.0

@@ -35,3 +35,21 @@ static func unlock_skill(skill: Skills) -> void:
 		is_air_attack_unlocked = true
 		AirAttackPlayerState.instance.enabled = true
 		AirAttackPlayerState3D.instance.enabled = true
+
+static func lock_skill(skill: Skills) -> void:
+	if skill == Skills.ATTACK:
+		AttackPlayerState.instance.enabled = false
+		AttackPlayerState3D.instance.enabled = false
+	elif skill == Skills.BALL:
+		is_ball_unlcoked = false
+	elif skill == Skills.WALLRUN:
+		ForrwardWallrunPlayerState.instance.enabled = false
+		ForrwardWallrunPlayerState3D.instance.enabled = false
+		SideWallrunPlayerState.instance.enabled = false
+	elif skill == Skills.DROP_ATTACK:
+		DropAttackPlayerState.instance.enabled = false
+		DropAttackPlayerState3D.instance.enabled = false
+	elif skill == Skills.AIR_ATTACK:
+		is_air_attack_unlocked = false
+		AirAttackPlayerState.instance.enabled = false
+		AirAttackPlayerState3D.instance.enabled = false

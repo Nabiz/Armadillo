@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://wmovi17nibkf" path="res://Assets/Player/Model/Armadillo_Sphere.glb" id="2_walc5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xdcgx"]
-friction = 20.0
+friction = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o7n6k"]
 radius = 0.48
 
 [node name="PlayerBall" type="RigidBody3D" node_paths=PackedStringArray("collision")]
-axis_lock_linear_z = true
-axis_lock_angular_y = true
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_xdcgx")
 script = ExtResource("1_xdcgx")

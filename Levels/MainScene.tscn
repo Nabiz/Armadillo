@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://brfhehoane2be" path="res://Scenes/Props/ChangeMovementStrategyArea.tscn" id="12_71tao"]
 [ext_resource type="PackedScene" uid="uid://bff2uhp1ce6wy" path="res://Scenes/Props/RunWall.tscn" id="12_ptrn6"]
 [ext_resource type="PackedScene" uid="uid://b7t7qr8w4t82u" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/spikeBlockWide.glb" id="13_71tao"]
-[ext_resource type="PackedScene" uid="uid://0w114pdoh04x" path="res://Scenes/Props/UnlockSkillArea.tscn" id="13_lxbb3"]
 [ext_resource type="PackedScene" uid="uid://drooitrjil3j" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/spikesLarge.glb" id="14_lxbb3"]
+[ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="15_aw745"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ptrn6"]
 left_to_right = -0.2
@@ -30,7 +30,7 @@ points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048,
 [node name="MainScene" type="Node3D"]
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.6351, 1.35271, -0.00171566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.635, 1.353, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -581,33 +581,6 @@ shape = SubResource("ConvexPolygonShape3D_lxbb3")
 [node name="ChangeMovementStrategyArea" parent="." instance=ExtResource("12_71tao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7024, 1, 0)
 
-[node name="UnlockSkillArea" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, 23.451, 2.26511, 3.19561)
-skill_to_unlock = 3
-
-[node name="UnlockSkillArea2" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -73.0035, 0.801122, -0.258671)
-skill_to_unlock = 2
-
-[node name="UnlockSkillArea3" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -9.78441, 2.66865, -0.258671)
-
-[node name="UnlockSkillArea4" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, 4.17543, 0.856737, -0.341121)
-skill_to_unlock = 1
-
-[node name="UnlockSkillArea7" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -70.6594, 0.856737, -0.341121)
-skill_to_unlock = 1
-
-[node name="UnlockSkillArea5" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -1.13749, 5.07785, -0.341121)
-skill_to_unlock = 4
-
-[node name="UnlockSkillArea6" parent="." instance=ExtResource("13_lxbb3")]
-transform = Transform3D(0.252188, 0, 0.967678, 0, 1, 0, -0.967678, 0, 0.252188, -58.1087, 0.823587, -0.341121)
-skill_to_unlock = 4
-
 [node name="spikeBlockWide2" parent="." instance=ExtResource("13_71tao")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -66.7735, 0.761152, 0.359596)
 
@@ -628,3 +601,5 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -55.0936, 0.528444, 2.10836)
 
 [node name="spikesLarge3" parent="." instance=ExtResource("14_lxbb3")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -34.8166, 0.487445, 0.416764)
+
+[node name="DebugPanel" parent="." instance=ExtResource("15_aw745")]
