@@ -14,6 +14,12 @@ func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("input_wallrun"):
 		if player.has_wall_on_front():
 			emit_signal("state_changing", ForrwardWallrunPlayerState3D.instance)
+		elif player.has_wall_on_right_side():
+			SideWallrunPlayerState3D.instance.set_right_wallrun_side()
+			emit_signal("state_changing", SideWallrunPlayerState3D.instance)
+		elif player.has_wall_on_left_side():
+			SideWallrunPlayerState3D.instance.set_left_wallrun_side()
+			emit_signal("state_changing", SideWallrunPlayerState3D.instance)
 	#
 	if Input.is_action_just_pressed("input_jump"):
 		emit_signal("state_changing", JumpPlayerState3D.instance)

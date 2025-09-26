@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dyvbxqvfo8qmc" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/AirAttackPlayerState.gd" id="7_55jev"]
 [ext_resource type="Script" uid="uid://bdt5jppxja6mk" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/DropAttackPlayerState.gd" id="8_foig6"]
 [ext_resource type="Script" uid="uid://r5l7xgxsoshv" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/ForrwardWallrunPlayerState.gd" id="9_h2b4q"]
-[ext_resource type="Script" uid="uid://kq0ldfnlxowq" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/SideWallrunPlayerState.gd" id="10_atyuq"]
+[ext_resource type="Script" uid="uid://kq0ldfnlxowq" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/SideWallrunPlayerState.gd" id="10_atyuq"]
 
 [node name="PlayerStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_i0y42")

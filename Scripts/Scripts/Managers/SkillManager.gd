@@ -12,6 +12,7 @@ func _ready() -> void:
 	ForrwardWallrunPlayerState.instance.enabled = false
 	ForrwardWallrunPlayerState3D.instance.enabled = false
 	SideWallrunPlayerState.instance.enabled = false
+	SideWallrunPlayerState3D.instance.enabled = false
 	DropAttackPlayerState.instance.enabled = false
 	DropAttackPlayerState3D.instance.enabled = false
 	AirAttackPlayerState.instance.enabled = false
@@ -28,6 +29,7 @@ static func unlock_skill(skill: Skills) -> void:
 		ForrwardWallrunPlayerState.instance.enabled = true
 		ForrwardWallrunPlayerState3D.instance.enabled = true
 		SideWallrunPlayerState.instance.enabled = true
+		SideWallrunPlayerState3D.instance.enabled = true
 	elif skill == Skills.DROP_ATTACK:
 		DropAttackPlayerState.instance.enabled = true
 		DropAttackPlayerState3D.instance.enabled = true

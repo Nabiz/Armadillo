@@ -1588,7 +1588,7 @@ tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.6, 0)]
+"values": [Vector3(0.45, 0.6, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0u84n"]
@@ -1866,7 +1866,7 @@ tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.6, 0)]
+"values": [Vector3(-0.45, 0.6, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_0kmp4"]
@@ -2294,26 +2294,35 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/position = Vector3(-8.95984, -7.93736, -45.9241)
-bones/0/rotation = Quaternion(-0.106737, 0.618421, 0.777666, -0.0373809)
-bones/1/rotation = Quaternion(0.295067, -0.0957552, 0.0472497, 0.949491)
-bones/2/rotation = Quaternion(-0.00256898, -0.0325685, 0.0233833, 0.999193)
-bones/3/rotation = Quaternion(-0.00194936, -0.0307943, 0.0264491, 0.999174)
-bones/8/rotation = Quaternion(0.213777, -0.607853, 0.128786, 0.753809)
-bones/9/rotation = Quaternion(0.0263509, 0.00054628, 0.827031, 0.561538)
-bones/11/position = Vector3(-9.86143e-06, 10.4223, -2.27241e-07)
-bones/11/rotation = Quaternion(-9.36434e-08, 0.0143339, 1.17417e-07, 0.999897)
-bones/15/rotation = Quaternion(0.663988, -0.332338, 0.531972, 0.407035)
-bones/16/rotation = Quaternion(0.166905, 0.38084, -0.371311, 0.8302)
-bones/17/rotation = Quaternion(0.0173632, -0.000199197, -0.740753, 0.671553)
-bones/23/rotation = Quaternion(-0.0121258, 0.741859, 0.605093, -0.288721)
-bones/24/rotation = Quaternion(-0.924532, -0.00101059, 0.0167183, 0.380737)
-bones/25/rotation = Quaternion(0.458761, 0.067095, -0.015764, 0.885883)
-bones/26/rotation = Quaternion(0.364557, -0.0655847, 0.0249565, 0.928533)
-bones/28/rotation = Quaternion(-0.0503018, 0.565302, 0.760722, 0.314968)
-bones/29/rotation = Quaternion(-0.686353, 0.0066683, 0.0662953, 0.72421)
-bones/30/rotation = Quaternion(0.381272, 0.0456736, -0.0330149, 0.922743)
-bones/31/rotation = Quaternion(0.342151, 0.0643106, -0.0235759, 0.937145)
+bones/0/position = Vector3(0.841249, 3.65089, -53.6908)
+bones/0/rotation = Quaternion(-0.654315, -0.079954, 0.00218828, 0.75198)
+bones/1/rotation = Quaternion(0.103133, 0.134778, 0.045844, 0.984427)
+bones/2/rotation = Quaternion(-0.0296225, 0.0156076, 0.0116194, 0.999372)
+bones/3/rotation = Quaternion(-0.0292522, 0.0156285, 0.0105221, 0.999395)
+bones/4/rotation = Quaternion(0.0493642, -0.0203323, -0.0277026, 0.99819)
+bones/5/rotation = Quaternion(-0.171513, -0.0576759, 0.00756736, 0.983463)
+bones/7/rotation = Quaternion(-0.612906, -0.406784, 0.518394, -0.436051)
+bones/8/rotation = Quaternion(0.351899, 0.382543, -0.346687, 0.780792)
+bones/9/rotation = Quaternion(0.0188082, 0.000784949, 0.59031, 0.806957)
+bones/10/rotation = Quaternion(0.0169725, -0.0868418, -0.0337474, 0.995506)
+bones/11/rotation = Quaternion(0.0516896, 0.0143143, -0.00758544, 0.998532)
+bones/12/rotation = Quaternion(-0.00166913, 0.0219787, -0.20529, 0.978453)
+bones/13/rotation = Quaternion(-0.0210776, -0.0186534, 0.0384769, 0.998863)
+bones/15/rotation = Quaternion(0.595413, -0.411383, 0.536695, 0.433826)
+bones/16/rotation = Quaternion(0.331096, 0.0595048, -0.116893, 0.934436)
+bones/17/rotation = Quaternion(0.016919, -0.000205396, -0.721815, 0.69188)
+bones/18/rotation = Quaternion(-0.182638, 0.125294, -0.0322496, 0.974631)
+bones/19/rotation = Quaternion(0.0216161, -0.740855, -0.0177026, 0.671083)
+bones/20/rotation = Quaternion(0.387371, -0.0560859, -0.084837, 0.916297)
+bones/21/rotation = Quaternion(0.303146, 0.0105039, 0.0551099, 0.951291)
+bones/23/rotation = Quaternion(0.0695308, 0.52661, 0.84004, -0.110362)
+bones/24/rotation = Quaternion(-0.907404, -0.0789722, 0.0685899, 0.407033)
+bones/25/rotation = Quaternion(0.306742, 0.0955401, 0.163477, 0.932768)
+bones/26/rotation = Quaternion(0.343192, -0.0597933, 0.0261364, 0.936996)
+bones/28/rotation = Quaternion(-0.0614958, 0.00488073, 0.997537, -0.0333824)
+bones/29/rotation = Quaternion(-0.580926, -0.090065, 0.0541655, 0.807142)
+bones/30/rotation = Quaternion(0.798274, -0.114671, -0.166598, 0.567322)
+bones/31/rotation = Quaternion(0.584079, 0.0693208, -0.0348077, 0.807982)
 
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
