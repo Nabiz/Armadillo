@@ -11,6 +11,8 @@ func handle_input(_event: InputEvent) -> void:
 		emit_signal("state_changing", AirAttackPlayerState3D.instance)
 	elif Input.is_action_just_pressed("input_special"):
 		emit_signal("state_changing", DropAttackPlayerState3D.instance)
+	elif Input.is_action_just_pressed("input_jump"):
+		emit_signal("state_changing", JumpPlayerState3D.instance)
 
 func enter() -> void:
 	player.animation.play("Fall")

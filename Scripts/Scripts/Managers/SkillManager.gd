@@ -1,10 +1,11 @@
 extends Node
 class_name SkillManager
 
-enum Skills { ATTACK, BALL, WALLRUN, DROP_ATTACK, AIR_ATTACK }
+enum Skills { ATTACK, BALL, WALLRUN, DROP_ATTACK, AIR_ATTACK, DOUBLE_JUMP }
 
 static var is_air_attack_unlocked: bool = false
 static var is_ball_unlcoked: bool = false
+static var is_double_jump_unlcoked: bool = false
 
 func _ready() -> void:
 	AttackPlayerState.instance.enabled = false
@@ -37,6 +38,8 @@ static func unlock_skill(skill: Skills) -> void:
 		is_air_attack_unlocked = true
 		AirAttackPlayerState.instance.enabled = true
 		AirAttackPlayerState3D.instance.enabled = true
+	elif skill == Skills.DOUBLE_JUMP:
+		is_double_jump_unlcoked = true
 
 static func lock_skill(skill: Skills) -> void:
 	if skill == Skills.ATTACK:
@@ -55,3 +58,5 @@ static func lock_skill(skill: Skills) -> void:
 		is_air_attack_unlocked = false
 		AirAttackPlayerState.instance.enabled = false
 		AirAttackPlayerState3D.instance.enabled = false
+	elif skill == Skills.DOUBLE_JUMP:
+		is_double_jump_unlcoked = false

@@ -30,6 +30,7 @@ func handle_input(_event: InputEvent) -> void:
 
 
 func enter() -> void:
+	JumpPlayerState3D.instance.reset_jump()
 	if SkillManager.is_air_attack_unlocked:
 		AirAttackPlayerState3D.instance.enabled = true
 	player.animation.play("Walk")

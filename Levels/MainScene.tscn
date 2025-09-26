@@ -314,10 +314,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1992, 3.27546, -1.24745)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1992, 3.27546, -1.24745)
 
 [node name="Wall101" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1992, 3.27546, -1.24745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.0671, 3.27546, -1.28383)
 
 [node name="Wall129" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1992, 1.27546, -1.24745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1683, 1.27546, -1.26942)
 
 [node name="Wall130" parent="." instance=ExtResource("12_ptrn6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1992, 2.27546, -1.24745)

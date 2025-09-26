@@ -3,16 +3,22 @@ class_name JumpPlayerState
 
 static var instance: JumpPlayerState
 
+var jump_count : int = 0
+
 func _enter_tree() -> void:
 	instance = self
 
 func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("input_attack"):
 		emit_signal("state_changing", AirAttackPlayerState.instance)
-	if Input.is_action_just_pressed("input_special"):
+	elif Input.is_action_just_pressed("input_special"):
 		emit_signal("state_changing", DropAttackPlayerState.instance)
 
 func enter() -> void:
+	jump_count += 1
+	var max_jumps: int = 2 if SkillManager.is_double_jump_unlcoked else 1
+	if jump_count == max_jumps:
+		enabled = false
 	player.animation.play("Jump")
 	player.velocity.y = player.jump_velocity
 
@@ -51,3 +57,7 @@ func physics_update(delta: float) -> void:
 	if player.velocity.y < 0.1:
 		emit_signal("state_changing", FallPlayerState.instance)
 		return
+
+func reset_jump() -> void:
+	jump_count = 0
+	enabled = true

@@ -29,6 +29,7 @@ func handle_input(_event: InputEvent) -> void:
 
 
 func enter() -> void:
+	JumpPlayerState.instance.reset_jump()
 	if SkillManager.is_air_attack_unlocked:
 		AirAttackPlayerState.instance.enabled = true
 	player.animation.play("Walk")

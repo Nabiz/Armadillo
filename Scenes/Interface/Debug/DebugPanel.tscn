@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvkx02gf7y1iq"]
+[gd_scene load_steps=7 format=3 uid="uid://bvkx02gf7y1iq"]
 
 [ext_resource type="Script" uid="uid://bpbq72da8hnxm" path="res://Scripts/Scripts/Debug/DebugPanel.gd" id="1_5niii"]
 [ext_resource type="Script" uid="uid://dxfrhihcjhttr" path="res://Scripts/Scripts/Debug/UnlockSkillCheckBox.gd" id="1_fse4t"]
 [ext_resource type="Script" uid="uid://dyyqud4rk1nx0" path="res://Scripts/Scripts/Debug/AddLivesButton.gd" id="2_7exnm"]
 [ext_resource type="Script" uid="uid://dx7uco7hvctm5" path="res://Scripts/Scripts/Debug/MovementStrategyCheckButton.gd" id="3_mrkyv"]
 [ext_resource type="Script" uid="uid://br34wngn4eogp" path="res://Scripts/Scripts/Debug/RespawnButton.gd" id="3_ne0vh"]
+[ext_resource type="Script" uid="uid://bw166it8j3x54" path="res://Scripts/Scripts/Debug/InfJumpCheckButton.gd" id="4_r2bqo"]
 
 [node name="DebugPanel" type="CanvasLayer" node_paths=PackedStringArray("panel")]
 script = ExtResource("1_5niii")
 panel = NodePath("Panel")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 custom_minimum_size = Vector2(300, 0)
 anchors_preset = 11
 anchor_left = 1.0
@@ -71,9 +71,14 @@ layout_mode = 2
 script = ExtResource("1_fse4t")
 skill_to_unlock = 4
 
-[node name="MovementStrategyLabel" type="Label" parent="Panel/MarginContainer/PanelConainer"]
+[node name="UnlockSkillCheckBox6" type="CheckBox" parent="Panel/MarginContainer/PanelConainer/SkillGridContainer"]
 layout_mode = 2
-text = "MOVEMENT STRATEGY"
+script = ExtResource("1_fse4t")
+skill_to_unlock = 5
+
+[node name="MovementLabel" type="Label" parent="Panel/MarginContainer/PanelConainer"]
+layout_mode = 2
+text = "MOVEMENT"
 horizontal_alignment = 1
 
 [node name="2D3DCheckButton" type="HBoxContainer" parent="Panel/MarginContainer/PanelConainer"]
@@ -91,6 +96,18 @@ script = ExtResource("3_mrkyv")
 [node name="3D" type="Label" parent="Panel/MarginContainer/PanelConainer/2D3DCheckButton"]
 layout_mode = 2
 text = "3D"
+
+[node name="InfJumpCheckButton" type="HBoxContainer" parent="Panel/MarginContainer/PanelConainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CheckButton" type="CheckButton" parent="Panel/MarginContainer/PanelConainer/InfJumpCheckButton"]
+layout_mode = 2
+script = ExtResource("4_r2bqo")
+
+[node name="Inf JUMP" type="Label" parent="Panel/MarginContainer/PanelConainer/InfJumpCheckButton"]
+layout_mode = 2
+text = "Inf JUMP"
 
 [node name="LivesLabel" type="Label" parent="Panel/MarginContainer/PanelConainer"]
 layout_mode = 2
@@ -112,6 +129,7 @@ script = ExtResource("3_ne0vh")
 [connection signal="toggled" from="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox3" to="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox3" method="_on_toggled"]
 [connection signal="toggled" from="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox4" to="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox4" method="_on_toggled"]
 [connection signal="toggled" from="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox5" to="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox5" method="_on_toggled"]
+[connection signal="toggled" from="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox6" to="Panel/MarginContainer/PanelConainer/SkillGridContainer/UnlockSkillCheckBox6" method="_on_toggled"]
 [connection signal="toggled" from="Panel/MarginContainer/PanelConainer/2D3DCheckButton/CheckButton" to="Panel/MarginContainer/PanelConainer/2D3DCheckButton/CheckButton" method="_on_toggled"]
 [connection signal="pressed" from="Panel/MarginContainer/PanelConainer/AddLivesButton" to="Panel/MarginContainer/PanelConainer/AddLivesButton" method="_on_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/PanelConainer/RespawnButton" to="Panel/MarginContainer/PanelConainer/RespawnButton" method="_on_pressed"]

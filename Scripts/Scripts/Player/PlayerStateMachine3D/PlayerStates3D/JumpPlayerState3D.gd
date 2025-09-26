@@ -3,6 +3,8 @@ class_name JumpPlayerState3D
 
 static var instance: JumpPlayerState3D
 
+var jump_count : int = 0
+
 func _enter_tree() -> void:
 	instance = self
 
@@ -13,6 +15,10 @@ func handle_input(_event: InputEvent) -> void:
 		emit_signal("state_changing", DropAttackPlayerState3D.instance)
 
 func enter() -> void:
+	jump_count += 1
+	var max_jumps: int = 2 if SkillManager.is_double_jump_unlcoked else 1
+	if jump_count == max_jumps:
+		enabled = false
 	player.animation.play("Jump")
 	player.velocity.y = player.jump_velocity
 
@@ -53,3 +59,7 @@ func physics_update(delta: float) -> void:
 	if player.velocity.y < 0.1:
 		emit_signal("state_changing", FallPlayerState3D.instance)
 		return
+
+func reset_jump() -> void:
+	jump_count = 0
+	enabled = true
