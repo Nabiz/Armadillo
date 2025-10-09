@@ -49,6 +49,9 @@ shadow_reverse_cull_face = true
 shadow_opacity = 0.5
 shadow_blur = 2.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_ptrn6")
+
 [node name="Coin" parent="." instance=ExtResource("3_rpqi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13495, 4.19162, 0)
 
@@ -114,9 +117,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7826, 9.00401, 0)
 
 [node name="Coin6" parent="." instance=ExtResource("3_rpqi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0566, 9.00401, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("4_ptrn6")
 
 [node name="DestroyableStaticBody" parent="." instance=ExtResource("7_lljjv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.826, 0.5, 0)

@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3(velocity_plane.x as float, velocity.y, velocity_plane.y as float)
 	
 	if is_on_floor():
-		velocity += 2*player.get_gravity() * delta
+		velocity += player.get_gravity() * delta
 		if SkillManager.is_double_jump_unlcoked:
 			_jump_count = 2
 		else:

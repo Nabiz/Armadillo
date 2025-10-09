@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://08k0ve6ag4a5"]
+
+[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="1_3g5s2"]
+[ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="2_ky1uv"]
+[ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="3_pnv5e"]
+[ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="4_pnv5e"]
+[ext_resource type="PackedScene" uid="uid://brfhehoane2be" path="res://Scenes/Props/ChangeMovementStrategyArea.tscn" id="5_jgiey"]
+
+[sub_resource type="GDScript" id="GDScript_jgiey"]
+script/source = "extends Node3D
+
+@onready var velocity_label: Label = $DebugPanel/VelocityLabel
+
+func _ready() -> void:
+	for skill in SkillManager.Skills:
+		SkillManager.unlock_skill(SkillManager.Skills[skill])
+
+func _process(_delta: float) -> void:
+	velocity_label.text = str(Player.instance.player_ball.velocity.x)
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_jgiey"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_e43hx"]
+points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
+
+[node name="JumpTest" type="Node3D"]
+script = SubResource("GDScript_jgiey")
+
+[node name="PlayerNodes" parent="." instance=ExtResource("1_3g5s2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4746, 0.896257, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.311465, 0.142215, 0.939556, 0.0996228, -0.988176, 0.116549, -13.6703, 9.72753, 3.60594)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_opacity = 0.5
+shadow_blur = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_ky1uv")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh_library = ExtResource("3_pnv5e")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 9
+data = {
+"cells": PackedInt32Array(1, 0, 11, 65537, 0, 11, 65544, 0, 11, 131056, 0, 11, 131062, 0, 11, 196598, 0, 11, 196604, 0, 11, 131068, 0, 11, 262140, 0, 11, 262145, 0, 11, 196609, 0, 11, 196616, 0, 11, 262152, 0, 11, 327688, 0, 11, 65520, 0, 11, 65526, 0, 11, 65532, 0, 11, 8, 0, 11, 65515, 0, 11, 131073, 0, 11, 131080, 0, 11, 327687, 0, 11, 327686, 0, 11, 327685, 0, 11, 262149, 0, 11, 196613, 0, 11, 13, 0, 11, 65549, 0, 11, 131085, 0, 11, 196621, 0, 11, 262157, 0, 11, 327693, 0, 11, 393229, 0, 11, 458770, 0, 11, 65515, 10, 11, 65516, 10, 11, 65517, 10, 11, 65524, 10, 11, 65525, 10, 11, 65526, 10, 11, 131052, 10, 11, 65522, 10, 11, 65523, 10, 11, 131061, 10, 11, 65533, 10, 11, 65535, 10, 11, 65534, 10, 11, 1, 10, 11, 0, 10, 11, 65536, 10, 11, 9, 10, 11, 10, 10, 11, 11, 10, 11, 20, 10, 11, 21, 10, 11, 22, 10, 11, 23, 10, 11, 65558, 10, 11, 34, 10, 11, 35, 10, 11, 36, 10, 11, 37, 10, 11, 65572, 10, 11, 65514, 21, 11, 65515, 21, 11, 65516, 21, 11, 65517, 21, 11, 65518, 21, 11, 65519, 21, 11, 65520, 21, 11, 65521, 21, 11, 65522, 21, 11, 65523, 21, 11, 65524, 21, 11, 65525, 21, 11, 65526, 21, 11, 65527, 21, 11, 65528, 21, 11, 65529, 21, 11, 65530, 21, 11, 36, 21, 11, 37, 21, 11, 38, 21, 11, 39, 21, 11, 40, 21, 11, 41, 21, 11, 65513, 21, 11, 65512, 21, 11, 65511, 21, 11, 65510, 21, 11, 65509, 21, 11, 65508, 21, 11, 65507, 21, 11, 65506, 21, 11, 65505, 21, 11, 65504, 21, 11, 65503, 21, 11, 65502, 21, 11, 65501, 21, 11, 65500, 21, 11, 65499, 21, 11, 65498, 21, 11, 65497, 21, 11, 65496, 21, 11, 65495, 21, 11, 65494, 21, 11, 65493, 21, 11, 65492, 21, 11, 65491, 21, 11, 65490, 21, 11, 65489, 21, 11, 65488, 21, 11, 65487, 21, 11, 65530, 20, 11, 65529, 20, 11, 65528, 20, 11, 65527, 20, 11, 65526, 20, 11, 65525, 20, 11, 65524, 20, 11, 65523, 20, 11, 65522, 20, 11, 65521, 20, 11, 65520, 20, 11, 65519, 20, 11, 65518, 20, 11, 65487, 20, 11, 65488, 20, 11, 65489, 20, 11, 65491, 20, 11, 65493, 20, 11, 65494, 20, 11, 65495, 20, 11, 65496, 20, 11, 65497, 20, 11, 65498, 20, 11, 65499, 20, 11, 65500, 20, 11, 65501, 20, 11, 65502, 20, 11, 65503, 20, 11, 65504, 20, 11, 65505, 20, 11, 65506, 20, 11, 65507, 20, 11, 65508, 20, 11, 65509, 20, 11, 65510, 20, 11, 65511, 20, 11, 65512, 20, 11, 65513, 20, 11, 65514, 20, 11, 65515, 20, 11, 65516, 20, 11, 65517, 20, 11, 65492, 20, 11, 65490, 20, 11, 36, 20, 11, 37, 20, 11, 38, 20, 11, 39, 20, 11, 40, 20, 11, 41, 20, 11, 16, 21, 11, 17, 21, 11, 17, 20, 11, 16, 20, 11, 18, 20, 11, 18, 21, 11, 19, 21, 11, 19, 20, 11, 35, 20, 11, 34, 20, 11, 33, 20, 11, 32, 20, 11, 31, 20, 11, 31, 21, 11, 32, 21, 11, 33, 21, 11, 34, 21, 11, 35, 21, 11, 30, 20, 11, 30, 21, 11, 29, 20, 11, 29, 21, 11, 9, 20, 11, 9, 21, 11, 12, 20, 11, 12, 21, 11)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jgiey")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_e43hx")
+
+[node name="DebugPanel" parent="." instance=ExtResource("4_pnv5e")]
+
+[node name="VelocityLabel" type="Label" parent="DebugPanel"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -44.0
+offset_right = 64.0
+offset_bottom = 44.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 64
+
+[node name="ChangeMovementStrategyArea" parent="." instance=ExtResource("5_jgiey")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -23.6408, 0, 0)
+
+[node name="ChangeMovementStrategyArea2" parent="." instance=ExtResource("5_jgiey")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -23.3101, 0, 8.34044)
+
+[node name="ChangeMovementStrategyArea3" parent="." instance=ExtResource("5_jgiey")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -23.3101, 0, 18.4104)
