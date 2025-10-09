@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6hhn5cyqee3"]
+[gd_scene load_steps=13 format=3 uid="uid://b6hhn5cyqee3"]
 
-[ext_resource type="Script" uid="uid://b4ogtwd0k50ur" path="res://Scripts/Scripts/Camera/BallCamera.gd" id="1_jmqii"]
 [ext_resource type="PackedScene" uid="uid://naguplp0cuib" path="res://Scenes/Player/PlayerBall.tscn" id="2_03plg"]
 [ext_resource type="PackedScene" uid="uid://cdj7xrynbb22t" path="res://Scenes/Player/Player.tscn" id="3_6nma4"]
 [ext_resource type="Shader" uid="uid://3mh1fp1yc8v7" path="res://Scripts/Shaders/TransformationSmoke.gdshader" id="4_03plg"]
@@ -53,17 +52,15 @@ height = 0.4
 
 [node name="PlayerNodes" type="Node3D"]
 
-[node name="BallCamera3D" type="Camera3D" parent="." node_paths=PackedStringArray("object_to_look_at")]
-transform = Transform3D(1, 0, 4.56956e-08, 0, 1, 0, -4.56956e-08, 0, 1, 0.046, 2, 6)
-script = ExtResource("1_jmqii")
-object_to_look_at = NodePath("../PlayerBall")
-
-[node name="PlayerBall" parent="." node_paths=PackedStringArray("ball_camera", "player") instance=ExtResource("2_03plg")]
+[node name="PlayerBall" parent="." node_paths=PackedStringArray("player", "ball_camera") instance=ExtResource("2_03plg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0)
 visible = false
 collision_mask = 3
-ball_camera = NodePath("../BallCamera3D")
 player = NodePath("../Player")
+ball_camera = NodePath("BallCamera3D")
+
+[node name="BallCamera3D" type="Camera3D" parent="PlayerBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 10)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "transformation_vfx", "transformation_timer", "tooltip") instance=ExtResource("3_6nma4")]
 gui = NodePath("../GUI")

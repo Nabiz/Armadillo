@@ -4,7 +4,7 @@ class_name SideWallrunPlayerState
 static var instance: SideWallrunPlayerState
 
 var wallrun_time: float = 0.0
-var max_wallrun_time: float = 2.5
+var max_wallrun_time: float = 2
 
 var _is_right_wallrun_side: bool = false
 
@@ -27,7 +27,7 @@ func enter() -> void:
 	else:
 		player.animation.play("LeftWallrun")
 		player.velocity.x = 1.2*player.speed
-	player.velocity.y = 2
+	player.velocity.y = 2.0
 
 
 func exit() -> void:
@@ -48,7 +48,7 @@ func update(delta: float) -> void:
 		emit_signal("state_changing", FallPlayerState.instance)
 
 func physics_update(delta: float) -> void:
-	player.velocity += player.get_gravity()/4 * delta
+	player.velocity += player.get_gravity()/6 * delta
 
 func set_right_wallrun_side() -> void:
 	_is_right_wallrun_side = true

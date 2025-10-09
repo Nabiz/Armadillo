@@ -30,7 +30,7 @@ points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048,
 [node name="MainScene" type="Node3D"]
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2852, 1.353, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.7234, 2.08044, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
@@ -43,7 +43,11 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.00940453, 0.979359, 0.20191, 0.326874, -0.193837, 0.924976, -13.6703, 2.30046, 3.60594)
+transform = Transform3D(0.945021, 0.0573002, -0.32195, 0.311465, 0.142215, 0.939556, 0.0996228, -0.988176, 0.116549, -13.6703, 9.72753, 3.60594)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_opacity = 0.5
+shadow_blur = 2.0
 
 [node name="Coin" parent="." instance=ExtResource("3_rpqi1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13495, 4.19162, 0)
@@ -542,43 +546,31 @@ transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 
 transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 29.6091, 7.1246, -13.4253)
 
 [node name="Wall156" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 9.48969, 0.876673, 6.97754)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.67319, 0.876673, 7.37521)
 
 [node name="Wall157" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 9.48969, 1.87667, 6.97754)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.67319, 1.87667, 7.37521)
 
 [node name="Wall158" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 9.48969, 2.87667, 6.97754)
-
-[node name="Wall159" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 9.48969, 3.87667, 6.97754)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.67319, 2.87667, 7.37521)
 
 [node name="Wall160" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 10.2877, 0.876673, 6.37494)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.63729, 0.876673, 6.37588)
 
 [node name="Wall161" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 10.2877, 1.87667, 6.37494)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.63729, 1.87667, 6.37588)
 
 [node name="Wall162" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 10.2877, 2.87667, 6.37494)
-
-[node name="Wall163" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 10.2877, 3.87667, 6.37494)
-
-[node name="Wall164" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 10.2877, 4.87667, 6.37494)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.63729, 2.87667, 6.37588)
 
 [node name="Wall165" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 11.0858, 0.876673, 5.77244)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.60152, 0.876673, 5.37654)
 
 [node name="Wall166" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 11.0858, 1.87667, 5.77244)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.60152, 1.87667, 5.37654)
 
 [node name="Wall167" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 11.0858, 2.87667, 5.77244)
-
-[node name="Wall168" parent="." instance=ExtResource("12_ptrn6")]
-transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 11.0858, 3.87667, 5.77244)
+transform = Transform3D(0.999356, 0, 0.0358588, 0, 1, 0, -0.0358588, 0, 0.999356, 8.60152, 2.87667, 5.37654)
 
 [node name="Wall61" parent="." instance=ExtResource("12_ptrn6")]
 transform = Transform3D(0.602581, 0, -0.798057, 0, 1, 0, 0.798057, 0, 0.602581, 29.6091, 8.1246, -13.4253)
@@ -671,6 +663,55 @@ mesh = SubResource("PrismMesh_ptrn6")
 [node name="StaticBody3D" type="StaticBody3D" parent="Rampa/MeshInstance3D5"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(0.58818, 0.243825, 0.771099, 0.188311, 0.88597, -0.423788, -0.786502, 0.39447, 0.475195, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_lxbb3")
+
+[node name="Rampa2" type="Node3D" parent="."]
+transform = Transform3D(0.86544, 0, 0.501012, 0, 1, 0, -0.501012, 0, 0.86544, 2.7867, 2.83976, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rampa2"]
+transform = Transform3D(7.98933, -0.41311, 0, 0.41311, 7.98933, 0, 0, 0, 8, 38.6767, -3.014, 0)
+mesh = SubResource("PrismMesh_ptrn6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampa2/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa2/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ptrn6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rampa2"]
+transform = Transform3D(7.5869, -2.53751, 0, 2.53751, 7.5869, 0, 0, 0, 8, 44.8722, -6.02099, 0)
+mesh = SubResource("PrismMesh_ptrn6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampa2/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa2/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_71tao")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Rampa2"]
+transform = Transform3D(6.50529, -4.6563, 0, 4.6563, 6.50529, 0, 0, 0, 8, 50.1068, -7.84001, 0)
+mesh = SubResource("PrismMesh_ptrn6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampa2/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa2/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lxbb3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Rampa2"]
+transform = Transform3D(4.23414, -6.78764, 0, 6.78764, 4.23414, 0, 0, 0, 8, 57.0103, -7.84001, 0)
+mesh = SubResource("PrismMesh_ptrn6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampa2/MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa2/MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_lxbb3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Rampa2"]
+transform = Transform3D(7.078, -3.72449, -0.173346, 3.71867, 7.07869, -0.252293, 0.270841, 0.14264, 7.99414, 85.1031, -7.84001, 0)
+mesh = SubResource("PrismMesh_ptrn6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rampa2/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rampa2/MeshInstance3D5/StaticBody3D"]
 transform = Transform3D(0.58818, 0.243825, 0.771099, 0.188311, 0.88597, -0.423788, -0.786502, 0.39447, 0.475195, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_lxbb3")
 

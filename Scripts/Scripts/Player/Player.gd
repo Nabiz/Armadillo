@@ -71,7 +71,6 @@ func transform_to_ball(delta: float) -> void:
 			gfx.visible = false
 			is_ball = true
 			player_ball.global_position = global_position + Vector3(0.0, 0.5, 0.0)
-			player_ball.ball_camera.global_position = camera.global_position
 			player_ball.activate_ball()
 			
 			state_machine.set_physics_process(false)
@@ -80,7 +79,7 @@ func transform_to_ball(delta: float) -> void:
 			state_machine_2d.transit_to_new_state(FallPlayerState.instance)
 			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
 		else:
-			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.linear_velocity * delta
+			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.velocity * delta
 			transformation_vfx.emitting = true
 			is_ball = false
 			player_ball.deactivate_ball()

@@ -1,29 +1,63 @@
-extends RigidBody3D
+extends CharacterBody3D
 class_name PlayerBall
 
-var torque_accelarion: float = 20.0
-var jump_force: float = 120.0
-@export var ball_camera: Camera3D
+var accelaration: float = 3.0
+var max_speed: float = 14.0
+var jump_speed: float = 5.6
 @export var player: Player
 @export var collision: CollisionShape3D
+@export var ball_camera: Camera3D
+@export var gfx_sphere: Node3D
+
+var _jump_count: int = 1
 
 func _ready() -> void:
+	set_floor_stop_on_slope_enabled(false)
 	deactivate_ball()
 
-func _physics_process(_delta: float) -> void:
+var rotation_speed: float = 1.0
+var _rotation_axis: Vector3
+var _rotation_angle: float
+func _process(delta: float) -> void:
+	if velocity.length_squared() > 0.001:
+		_rotation_axis = Vector3.UP.cross(velocity).normalized()
+		if is_on_floor():
+			_rotation_angle = velocity.length() * delta * rotation_speed
+		if _rotation_axis.length_squared() > 0.1:
+			gfx_sphere.rotate(_rotation_axis, _rotation_angle)
+
+
+func _physics_process(delta: float) -> void:
 	if player.is_movment3D:
 		if Input.is_action_pressed("ui_up"):
-			apply_torque(torque_accelarion*Vector3.LEFT)
+			velocity += delta*accelaration*Vector3.FORWARD
 		if Input.is_action_pressed("ui_down"):
-			apply_torque(torque_accelarion*Vector3.RIGHT)
+			velocity += delta*accelaration*Vector3.BACK
 	
 	if Input.is_action_pressed("ui_left"):
-		apply_torque(torque_accelarion*Vector3.BACK)
+		velocity += delta*accelaration*Vector3.LEFT
 	if Input.is_action_pressed("ui_right"):
-		apply_torque(torque_accelarion*Vector3.FORWARD)
+		velocity += delta*accelaration*Vector3.RIGHT
+		
+	var velocity_plane: Vector2 = Vector2(velocity.x, velocity.z)
+	if velocity_plane.length() > max_speed:
+		velocity_plane = velocity_plane.normalized() * max_speed
+		velocity = Vector3(velocity_plane.x as float, velocity.y, velocity_plane.y as float)
 	
-	if Input.is_action_just_pressed("input_jump"):
-		apply_impulse(jump_force * Vector3.UP)
+	if is_on_floor():
+		velocity += 2*player.get_gravity() * delta
+		if SkillManager.is_double_jump_unlcoked:
+			_jump_count = 2
+		else:
+			_jump_count = 1
+	else:
+		velocity += player.get_gravity() * delta
+	
+	if Input.is_action_just_pressed("input_jump") and _jump_count > 0:
+		_jump_count -= 1
+		velocity.y = jump_speed
+	
+	move_and_slide()
 
 
 func activate_ball() -> void:
@@ -34,17 +68,18 @@ func activate_ball() -> void:
 		axis_lock_angular_y = true
 		axis_lock_linear_z = true
 	rotation = Vector3.ZERO
-	linear_velocity = player.velocity if player else Vector3.ZERO
-	angular_velocity = Vector3.ZERO
+	velocity = player.velocity if player else Vector3.ZERO
 	set_physics_process(true)
 	collision.disabled = false
 	visible = true
+	
 	ball_camera.make_current()
 
 func deactivate_ball() -> void:
 	set_physics_process(false)
 	collision.disabled = true
 	visible = false
+	
 	ball_camera.clear_current()
 
 func take_damage(ammount: int) -> void:
