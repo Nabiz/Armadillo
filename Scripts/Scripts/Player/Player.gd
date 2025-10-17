@@ -62,11 +62,15 @@ func _process(delta: float) -> void:
 		change_movment_strategy()
 
 func transform_to_ball(delta: float) -> void:
+	if is_ball and not player_ball.is_on_floor():
+		return
+	elif not is_on_floor():
+		return
 	if not transformation_timer.on_cooldown:
 		transformation_timer.start_cooldown()
 		if not is_ball:
 			transformation_vfx.position = Vector3(0.0,0.6,0.0) + velocity * delta
-			transformation_vfx.emitting = true
+			transformation_vfx.restart()
 			collision.disabled = true
 			gfx.visible = false
 			is_ball = true
@@ -80,7 +84,7 @@ func transform_to_ball(delta: float) -> void:
 			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
 		else:
 			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.velocity * delta
-			transformation_vfx.emitting = true
+			transformation_vfx.restart()
 			is_ball = false
 			player_ball.deactivate_ball()
 			global_position = player_ball.global_position - Vector3(0.0, 0.5, 0.0)

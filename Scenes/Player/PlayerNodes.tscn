@@ -79,7 +79,7 @@ process_material = SubResource("ParticleProcessMaterial_6nma4")
 draw_pass_1 = SubResource("SphereMesh_ws56d")
 
 [node name="TransformationCooldownTimer" type="Timer" parent="Player"]
-wait_time = 2.0
+wait_time = 0.25
 one_shot = true
 script = ExtResource("6_rm4y0")
 

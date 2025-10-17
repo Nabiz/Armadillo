@@ -17,6 +17,7 @@ func _ready() -> void:
 
 func spawn_player(player: Player) -> void:
 		player.global_position = current_spawn_point.global_position
+		player.player_ball.global_position = current_spawn_point.global_position
 		player.resurect()
 
 func spawn_player_ball(player_ball: PlayerBall) -> void:
