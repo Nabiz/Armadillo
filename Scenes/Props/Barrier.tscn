@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://pxdl855khcmx"]
+
+[ext_resource type="PackedScene" uid="uid://gc2k4o3dhrfl" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/fenceLow.glb" id="1_cwlv0"]
+[ext_resource type="Script" uid="uid://du3rjuao6548m" path="res://Scripts/Scripts/Props/Barrier.gd" id="1_n4rdv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4rdv"]
+size = Vector3(1, 0.2, 0.2)
+
+[node name="Barrier" type="StaticBody3D" node_paths=PackedStringArray("gfx", "collision")]
+script = ExtResource("1_n4rdv")
+gfx = NodePath("fenceLow2")
+collision = NodePath("CollisionShape3D")
+
+[node name="fenceLow2" parent="." instance=ExtResource("1_cwlv0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_n4rdv")
