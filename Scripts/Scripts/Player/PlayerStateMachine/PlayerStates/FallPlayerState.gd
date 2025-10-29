@@ -12,10 +12,12 @@ func handle_input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("input_special"):
 		emit_signal("state_changing", DropAttackPlayerState.instance)
 	elif Input.is_action_just_pressed("input_jump"):
-		emit_signal("state_changing", JumpPlayerState.instance)
-
+		var max_jumps: int = 2 if SkillManager.is_double_jump_unlcoked else 1
+		if JumpPlayerState.instance.jump_count < max_jumps:
+			emit_signal("state_changing", JumpPlayerState.instance)
 
 func enter() -> void:
+	JumpPlayerState.instance.jump_count+=1
 	player.animation.play("Fall")
 
 func exit() -> void:
