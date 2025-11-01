@@ -1,0 +1,102 @@
+[gd_scene load_steps=2 format=3 uid="uid://drrbhscaym7fy"]
+
+[ext_resource type="Script" uid="uid://dan22ou84bwvc" path="res://Scripts/Scripts/Interface/Menu/MainMenu.gd" id="1_suvdl"]
+
+[node name="MainMenu" type="CanvasLayer" node_paths=PackedStringArray("menu_container", "settings_container")]
+script = ExtResource("1_suvdl")
+menu_container = NodePath("Control/MenuContainer")
+settings_container = NodePath("Control/SettingsContainer")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_right = 174.0
+offset_bottom = 119.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 42
+text = "Armadillo Zico:
+The Reilict of Fire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -68.0
+offset_right = 48.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NewGameButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="SettingsButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="SettingsContainer" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -38.5
+offset_right = 39.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScreeModeLabel" type="Label" parent="Control/SettingsContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="MusicLabel" type="Label" parent="Control/SettingsContainer"]
+layout_mode = 2
+text = "Music Sound blalball"
+
+[node name="FPSLabel" type="Label" parent="Control/SettingsContainer"]
+layout_mode = 2
+text = "FPS: MAX FPS"
+
+[node name="SaveSettingsButton" type="Button" parent="Control/SettingsContainer"]
+layout_mode = 2
+text = "Save"
+
+[connection signal="pressed" from="Control/MenuContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Control/MenuContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="Control/MenuContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Control/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/SettingsContainer/SaveSettingsButton" to="." method="_on_save_settings_button_pressed"]

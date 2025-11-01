@@ -7,18 +7,12 @@ static var is_air_attack_unlocked: bool = false
 static var is_ball_unlcoked: bool = false
 static var is_double_jump_unlcoked: bool = false
 
-func _ready() -> void:
-	AttackPlayerState.instance.enabled = false
-	AttackPlayerState3D.instance.enabled = false
-	ForrwardWallrunPlayerState.instance.enabled = false
-	ForrwardWallrunPlayerState3D.instance.enabled = false
-	SideWallrunPlayerState.instance.enabled = false
-	SideWallrunPlayerState3D.instance.enabled = false
-	DropAttackPlayerState.instance.enabled = false
-	DropAttackPlayerState3D.instance.enabled = false
-	AirAttackPlayerState.instance.enabled = false
-	AirAttackPlayerState3D.instance.enabled = false
-
+static func lock_all_skills() -> void:
+	is_air_attack_unlocked = false
+	is_ball_unlcoked = false
+	is_double_jump_unlcoked = false
+	for skill: Skills in Skills.values():
+		lock_skill(skill)
 
 static func unlock_skill(skill: Skills) -> void:
 	if skill == Skills.ATTACK:

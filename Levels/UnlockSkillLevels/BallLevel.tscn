@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbq0d50thfkql"]
+[gd_scene load_steps=13 format=3 uid="uid://bbq0d50thfkql"]
 
+[ext_resource type="Script" uid="uid://cvgosb1ex7qeh" path="res://Scripts/Scripts/Level/LevelSetup.gd" id="1_baqfu"]
 [ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="1_iy6hy"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="2_ue8ow"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="3_ue8ow"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="6_2ipog"]
 [ext_resource type="PackedScene" uid="uid://bikn5do7metv8" path="res://Scenes/Props/Lever.tscn" id="7_l1fb4"]
 [ext_resource type="PackedScene" uid="uid://pxdl855khcmx" path="res://Scenes/Props/Barrier.tscn" id="8_8o43p"]
+[ext_resource type="PackedScene" uid="uid://difri3s61bk8t" path="res://Scenes/Interface/Menu/PauseMenu.tscn" id="9_baqfu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_d4qsp"]
 size = Vector3(200, 1, 50)
@@ -16,6 +18,7 @@ size = Vector3(200, 1, 50)
 points = PackedVector3Array(-100, -0.5, -25, -100, 0.5, -25, 100, -0.5, -25, -100, -0.5, 25, -100, 0.5, 25, 100, 0.5, -25, 100, -0.5, 25, 100, 0.5, 25)
 
 [node name="BallLevel" type="Node3D"]
+script = ExtResource("1_baqfu")
 
 [node name="PlayerNodes" parent="." instance=ExtResource("1_iy6hy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 0)
@@ -102,3 +105,6 @@ barrier_array = [NodePath("../Barrier")]
 
 [node name="Barrier" parent="." instance=ExtResource("8_8o43p")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.02, 10.143, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_baqfu")]
+visible = false

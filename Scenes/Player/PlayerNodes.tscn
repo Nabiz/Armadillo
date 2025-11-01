@@ -63,7 +63,6 @@ ball_camera = NodePath("BallCamera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "transformation_vfx", "transformation_timer", "tooltip") instance=ExtResource("3_6nma4")]
-floor_max_angle = 1.13446
 gui = NodePath("../GUI")
 player_ball = NodePath("../PlayerBall")
 transformation_vfx = NodePath("TransformationSmokeVFX")

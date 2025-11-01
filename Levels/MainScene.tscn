@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=22 format=3 uid="uid://c15bqah4mq85p"]
 
+[ext_resource type="Script" uid="uid://cvgosb1ex7qeh" path="res://Scripts/Scripts/Level/LevelSetup.gd" id="1_irpm1"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="3_rpqi1"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="4_ptrn6"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
@@ -15,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://drooitrjil3j" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/spikesLarge.glb" id="14_lxbb3"]
 [ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="15_aw745"]
 [ext_resource type="PackedScene" uid="uid://bikn5do7metv8" path="res://Scenes/Props/Lever.tscn" id="15_irpm1"]
+[ext_resource type="PackedScene" uid="uid://difri3s61bk8t" path="res://Scenes/Interface/Menu/PauseMenu.tscn" id="17_fvp6m"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_ptrn6"]
 left_to_right = -0.2
@@ -29,6 +31,7 @@ points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048,
 points = PackedVector3Array(0.498236, -0.5, -0.5, -0.690431, 0.519048, 0.519048, -0.690431, 0.519048, -0.509524, -0.502208, -0.488962, 0.498486, 0.509524, -0.490394, 0.519048, -0.502208, -0.488962, -0.488962, 0.414181, -0.395149, -0.509524, -0.709524, 0.519048, 0.519048, -0.709524, 0.519048, -0.509524, 0.414181, -0.395149, 0.519048, -0.614181, 0.46186, -0.509524, -0.614181, 0.46186, 0.519048, 0.0714733, -0.109513, -0.509524)
 
 [node name="MainScene" type="Node3D"]
+script = ExtResource("1_irpm1")
 
 [node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941452, 2.08044, 0)
@@ -953,3 +956,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0531, 4.06027, 8.73213)
 
 [node name="Lever" parent="." instance=ExtResource("15_irpm1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4732, 0.5, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("17_fvp6m")]
+visible = false
