@@ -60,7 +60,7 @@ player = NodePath("../Player")
 ball_camera = NodePath("BallCamera3D")
 
 [node name="BallCamera3D" type="Camera3D" parent="PlayerBall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 8)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "transformation_vfx", "transformation_timer", "tooltip") instance=ExtResource("3_6nma4")]
 gui = NodePath("../GUI")

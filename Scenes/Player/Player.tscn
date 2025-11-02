@@ -9,7 +9,7 @@
 [ext_resource type="Shader" uid="uid://67tqb7fqdacm" path="res://Scripts/Shaders/FireAttack.gdshader" id="5_t26db"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1305s"]
-radius = 0.35
+radius = 0.4
 height = 1.55204
 
 [sub_resource type="Animation" id="Animation_jmcll"]
@@ -2285,7 +2285,7 @@ cap_top = false
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
 collision_mask = 3
 floor_constant_speed = true
-floor_max_angle = 1.309
+floor_max_angle = 1.39626
 script = ExtResource("1_xhfnw")
 gfx = NodePath("ArmadilloGFX")
 collision = NodePath("CollisionShape3D")
@@ -2401,7 +2401,7 @@ process_mode = 4
 player = NodePath("..")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
 current = true
 
 [editable path="ArmadilloGFX"]

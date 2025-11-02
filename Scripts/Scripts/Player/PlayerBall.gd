@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name PlayerBall
 
 var accelaration: float = 3.0
-var max_speed: float = 14.0
+var max_speed: float = 12.0
 var jump_speed: float = 5.6
 @export var player: Player
 @export var collision: CollisionShape3D
