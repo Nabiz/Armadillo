@@ -55,7 +55,6 @@ height = 0.4
 [node name="PlayerBall" parent="." node_paths=PackedStringArray("player", "ball_camera") instance=ExtResource("2_03plg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0)
 visible = false
-collision_mask = 3
 player = NodePath("../Player")
 ball_camera = NodePath("BallCamera3D")
 
@@ -63,6 +62,7 @@ ball_camera = NodePath("BallCamera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 8)
 
 [node name="Player" parent="." node_paths=PackedStringArray("gui", "player_ball", "transformation_vfx", "transformation_timer", "tooltip") instance=ExtResource("3_6nma4")]
+collision_mask = 337
 gui = NodePath("../GUI")
 player_ball = NodePath("../PlayerBall")
 transformation_vfx = NodePath("TransformationSmokeVFX")

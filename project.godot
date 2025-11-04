@@ -135,6 +135,18 @@ input_pause={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="PlayerPhysics"
+3d_physics/layer_2="PlayerArea"
+3d_physics/layer_3="PlayerAttack"
+3d_physics/layer_4="EnemyPhysics"
+3d_physics/layer_5="EnemyArea"
+3d_physics/layer_6="EnemyAttack"
+3d_physics/layer_7="Environment"
+3d_physics/layer_8="RunnableWall"
+3d_physics/layer_9="Pickups"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

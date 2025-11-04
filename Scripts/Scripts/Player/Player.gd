@@ -129,7 +129,7 @@ func _change_movement_strategy_to_2d() -> void:
 		is_movment3D = false
 		state_machine_3d.process_mode = Node.PROCESS_MODE_DISABLED
 		state_machine_2d.process_mode = Node.PROCESS_MODE_INHERIT
-		position.z = position.z - fmod(position.z, 5.0)
+		global_position.z = snapped(global_position.z, 5.0)
 		state_machine = state_machine_2d
 
 func _change_movement_strategy_to_3d() -> void:

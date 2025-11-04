@@ -41,6 +41,7 @@ _data = {
 }
 
 [node name="Coin" type="Area3D" node_paths=PackedStringArray("gfx", "collision_shape", "audio_player")]
+collision_layer = 256
 script = ExtResource("1_fi177")
 gfx = NodePath("GFX")
 collision_shape = NodePath("CollisionShape3D")

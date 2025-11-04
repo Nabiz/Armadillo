@@ -7,6 +7,7 @@
 radius = 0.48
 
 [node name="PlayerBall" type="CharacterBody3D" node_paths=PackedStringArray("collision", "gfx_sphere")]
+collision_mask = 321
 floor_snap_length = 0.2
 script = ExtResource("1_xdcgx")
 collision = NodePath("CollisionShape3D")

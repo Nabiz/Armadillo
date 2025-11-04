@@ -10,12 +10,7 @@ func _on_body_entered(body: Node3D) -> void:
 		audio_player.play()
 		collision_shape.call_deferred("set_disabled", true)
 		gfx.visible = false
-		if body is Player:
-			var player: Player = body as Player
-			player.get_gui().add_coin()
-		elif body is PlayerBall:
-			var player_ball: PlayerBall = body as PlayerBall
-			player_ball.player.get_gui().add_coin()
+		Player.instance.get_gui().add_coin()
 			
 func _on_audio_stream_player_3d_finished() -> void:
 	queue_free()
