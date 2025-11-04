@@ -70,6 +70,7 @@ func activate_ball() -> void:
 	rotation = Vector3.ZERO
 	velocity = player.velocity if player else Vector3.ZERO
 	set_physics_process(true)
+	set_process(true)
 	collision.disabled = false
 	visible = true
 	
@@ -77,6 +78,7 @@ func activate_ball() -> void:
 
 func deactivate_ball() -> void:
 	set_physics_process(false)
+	set_process(false)
 	collision.disabled = true
 	visible = false
 	

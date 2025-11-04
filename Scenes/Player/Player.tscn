@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdj7xrynbb22t"]
+[gd_scene load_steps=28 format=3 uid="uid://cdj7xrynbb22t"]
 
 [ext_resource type="Script" uid="uid://con8xjx3568sq" path="res://Scripts/Scripts/Player/Player.gd" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://vdqmc7bu7mhy" path="res://Scenes/Player/AttackAreas/PlayerAttackArea.tscn" id="2_jmcll"]
@@ -2282,8 +2282,11 @@ shader_parameter/_scale = 5.0
 rings = 48
 cap_top = false
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t26db"]
+size = Vector3(0.435, 1, 0.68)
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
-collision_mask = 3
+collision_mask = 321
 floor_constant_speed = true
 floor_max_angle = 1.39626
 script = ExtResource("1_xhfnw")
@@ -2403,6 +2406,14 @@ player = NodePath("..")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
 current = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.707983, 0)
+collision_layer = 2
+collision_mask = 304
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_t26db")
 
 [editable path="ArmadilloGFX"]
 [editable path="ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"]
