@@ -9,11 +9,11 @@ class_name Player
 @export_category("Child Nodes")
 @export var gfx: Node3D
 @export var collision: CollisionShape3D
-@export var gui: GUI
 @export var animation: AnimationPlayer
 @export var camera: Camera3D
 @export var state_machine: PlayerStateMachine
 
+@export var player_area: Area3D
 @export var attack_areas: Array[PlayerAttackArea]
 
 @export var forrward_wall_raycast: RayCast3D
@@ -33,15 +33,11 @@ var can_change_movement_strategy: bool = false
 @export var state_machine_3d: PlayerStateMachine3D
 
 var direction: Vector3 = Vector3.ZERO
-var can_move_on_z_axis: bool = false
 
 static var instance: Player
 
 func _enter_tree() -> void:
 	instance = self
-
-func get_gui() -> GUI:
-	return gui
 
 func disable_destroyable_collision() -> void:
 	set_collision_mask_value(2, false)
@@ -95,15 +91,6 @@ func transform_to_ball(delta: float) -> void:
 			
 			collision.disabled = false
 			gfx.visible = true
-
-func take_damage(ammount: int) -> void:
-	get_gui().lose_hearts(ammount)
-	if get_gui().hearts <= 0:
-		GameOverScreen.instance.show_gameover()
-		SpawnManager.instance.spawn_player(self)
-
-func resurect() -> void:
-	get_gui().lose_hearts(-3)
 
 func has_wall_on_front() -> bool:
 	forrward_wall_raycast.force_raycast_update()

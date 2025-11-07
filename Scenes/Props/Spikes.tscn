@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6dy4y2petkr4"]
+
+[ext_resource type="PackedScene" uid="uid://drooitrjil3j" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/spikesLarge.glb" id="1_a6e3r"]
+[ext_resource type="Script" uid="uid://cwolrjoo71jma" path="res://Scripts/Scripts/Enemy/EnemyAttackArea.gd" id="1_xgch7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgch7"]
+size = Vector3(0.541382, 0.253784, 1)
+
+[node name="Spikes" type="Area3D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_xgch7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00762939, 0.128357, 0)
+shape = SubResource("BoxShape3D_xgch7")
+
+[node name="spikesLarge2" parent="." instance=ExtResource("1_a6e3r")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

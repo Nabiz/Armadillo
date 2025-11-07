@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c15bqah4mq85p"]
+[gd_scene load_steps=15 format=3 uid="uid://c15bqah4mq85p"]
 
 [ext_resource type="Script" uid="uid://cvgosb1ex7qeh" path="res://Scripts/Scripts/Level/LevelSetup.gd" id="1_irpm1"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="4_ptrn6"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="7_5crlr"]
-[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="7_5eubm"]
+[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Managers/PlayerManager.tscn" id="7_5eubm"]
 [ext_resource type="PackedScene" uid="uid://b0ucbx5gdmswt" path="res://Scenes/Props/DestroyableStaticBody.tscn" id="7_lljjv"]
 [ext_resource type="PackedScene" uid="uid://bb7w7y1t3rh8x" path="res://Scenes/Managers/SpawnManager.tscn" id="9_4h6gp"]
 [ext_resource type="PackedScene" uid="uid://bjmqhylnoq4mp" path="res://Scenes/Interface/GameOverScreen.tscn" id="10_rc4gq"]
@@ -11,13 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://brfhehoane2be" path="res://Scenes/Props/ChangeMovementStrategyArea.tscn" id="12_71tao"]
 [ext_resource type="PackedScene" uid="uid://bff2uhp1ce6wy" path="res://Scenes/Props/RunWall.tscn" id="12_ptrn6"]
 [ext_resource type="PackedScene" uid="uid://dhbsh7r3nno3q" path="res://Scenes/Pickups/Coin.tscn" id="13_71tao"]
+[ext_resource type="PackedScene" uid="uid://b6dy4y2petkr4" path="res://Scenes/Props/Spikes.tscn" id="14_lxbb3"]
 [ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="15_aw745"]
 [ext_resource type="PackedScene" uid="uid://difri3s61bk8t" path="res://Scenes/Interface/Menu/PauseMenu.tscn" id="17_fvp6m"]
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_irpm1")
 
-[node name="PlayerNodes" parent="." instance=ExtResource("7_5eubm")]
+[node name="PlayerManager" parent="." instance=ExtResource("7_5eubm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941452, 2.08044, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -493,3 +494,6 @@ visible = false
 
 [node name="Coin" parent="." instance=ExtResource("13_71tao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89869, 0.5, -0.072914)
+
+[node name="Spikes" parent="." instance=ExtResource("14_lxbb3")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.39579, 0.557744, 0)

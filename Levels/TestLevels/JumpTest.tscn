@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://08k0ve6ag4a5"]
 
-[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="1_3g5s2"]
+[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Managers/PlayerManager.tscn" id="1_3g5s2"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="2_ky1uv"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="3_pnv5e"]
 [ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="4_pnv5e"]
@@ -34,7 +34,7 @@ points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -
 [node name="JumpTest" type="Node3D"]
 script = SubResource("GDScript_jgiey")
 
-[node name="PlayerNodes" parent="." instance=ExtResource("1_3g5s2")]
+[node name="PlayerManager" parent="." instance=ExtResource("1_3g5s2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4746, 0.896257, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

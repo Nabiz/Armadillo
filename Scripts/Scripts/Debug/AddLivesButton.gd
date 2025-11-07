@@ -1,4 +1,4 @@
 extends Button
 
 func _on_pressed() -> void:
-	Player.instance.resurect()
+	PlayerManager.instance.gui.lose_hearts(-3)

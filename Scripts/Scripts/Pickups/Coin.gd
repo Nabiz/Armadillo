@@ -9,7 +9,7 @@ func _on_area_entered(_area: Area3D) -> void:
 	audio_player.play()
 	collision_shape.call_deferred("set_disabled", true)
 	gfx.visible = false
-	Player.instance.get_gui().add_coin()
+	PlayerManager.instance.gui.add_coin()
 
 func _on_audio_stream_player_3d_finished() -> void:
 	queue_free()

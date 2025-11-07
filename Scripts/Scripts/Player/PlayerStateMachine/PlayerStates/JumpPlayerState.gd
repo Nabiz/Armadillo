@@ -28,11 +28,9 @@ func physics_update(delta: float) -> void:
 	player.velocity += player.get_gravity() * delta
 	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var p: Player = player
-	if p.can_move_on_z_axis:
-		p.direction = (p.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	else:
-		p.velocity.z = 0
-		p.direction = (p.transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
+
+	p.velocity.z = 0
+	p.direction = (p.transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
 	
 	if p.direction.length() > 0:
 		var target_direction: Vector3 = -p.direction
@@ -41,14 +39,10 @@ func physics_update(delta: float) -> void:
 		p.gfx.global_transform.basis = target_basis
 		
 	if p.direction:
-		if p.can_move_on_z_axis:
-			p.velocity = p.direction * p.speed + Vector3(0.0, p.velocity.y, 0.0)
-		else:
-			p.velocity.x = p.direction.x * p.speed
+		p.velocity.x = p.direction.x * p.speed
 	else:
 		p.velocity.x = move_toward(p.velocity.x, 0, p.speed)
-		if p.can_move_on_z_axis:
-			p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
+
 	
 	if player.velocity.y < 0.1:
 		emit_signal("state_changing", FallPlayerState.instance)

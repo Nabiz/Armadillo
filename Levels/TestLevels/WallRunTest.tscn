@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2ywcr6fbx2qi"]
 
-[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="1_da88w"]
+[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Managers/PlayerManager.tscn" id="1_da88w"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="2_iqa2b"]
 [ext_resource type="PackedScene" uid="uid://bvkx02gf7y1iq" path="res://Scenes/Interface/Debug/DebugPanel.tscn" id="3_jnw1h"]
 
@@ -18,7 +18,7 @@ points = PackedVector3Array(10, 2.5, 1, 10, 2.5, -1, -10, 2.5, 1, 10, -2.5, 1, 1
 
 [node name="WallRunTest" type="Node3D"]
 
-[node name="PlayerNodes" parent="." instance=ExtResource("1_da88w")]
+[node name="PlayerManager" parent="." instance=ExtResource("1_da88w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4615, 0.896257, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

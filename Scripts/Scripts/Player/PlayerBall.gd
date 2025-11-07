@@ -4,12 +4,14 @@ class_name PlayerBall
 var accelaration: float = 3.0
 var max_speed: float = 12.0
 var jump_speed: float = 5.6
+@export var ball_area: Area3D
 @export var player: Player
 @export var collision: CollisionShape3D
 @export var ball_camera: Camera3D
 @export var gfx_sphere: Node3D
 
 var _jump_count: int = 1
+
 
 func _ready() -> void:
 	set_floor_stop_on_slope_enabled(false)
@@ -76,6 +78,7 @@ func activate_ball() -> void:
 	
 	ball_camera.make_current()
 
+
 func deactivate_ball() -> void:
 	set_physics_process(false)
 	set_process(false)
@@ -83,9 +86,3 @@ func deactivate_ball() -> void:
 	visible = false
 	
 	ball_camera.clear_current()
-
-func take_damage(ammount: int) -> void:
-	player.get_gui().lose_hearts(ammount)
-	if player.get_gui().hearts <= 0:
-		GameOverScreen.instance.show_gameover()
-		SpawnManager.instance.spawn_player_ball(self)

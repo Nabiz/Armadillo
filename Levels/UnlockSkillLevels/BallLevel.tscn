@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bbq0d50thfkql"]
 
 [ext_resource type="Script" uid="uid://cvgosb1ex7qeh" path="res://Scripts/Scripts/Level/LevelSetup.gd" id="1_baqfu"]
-[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Player/PlayerNodes.tscn" id="1_iy6hy"]
+[ext_resource type="PackedScene" uid="uid://b6hhn5cyqee3" path="res://Scenes/Managers/PlayerManager.tscn" id="1_iy6hy"]
 [ext_resource type="MeshLibrary" uid="uid://c3yber8ojxi34" path="res://Assets/Models/PlatformerKit/MeshLibrary/PlatformerKitML.tres" id="2_ue8ow"]
 [ext_resource type="Environment" uid="uid://crbqpsnblknmf" path="res://Resources/Environment.tres" id="3_ue8ow"]
 [ext_resource type="PackedScene" uid="uid://0w114pdoh04x" path="res://Scenes/Pickups/UnlockSkillArea.tscn" id="4_d4qsp"]
@@ -15,7 +15,7 @@
 [node name="BallLevel" type="Node3D"]
 script = ExtResource("1_baqfu")
 
-[node name="PlayerNodes" parent="." instance=ExtResource("1_iy6hy")]
+[node name="PlayerManager" parent="." instance=ExtResource("1_iy6hy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.557, 11.57, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
