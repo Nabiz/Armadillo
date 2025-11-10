@@ -51,11 +51,12 @@ material = SubResource("ShaderMaterial_rm4y0")
 radius = 0.2
 height = 0.4
 
-[node name="PlayerManager" type="Node3D" node_paths=PackedStringArray("gui", "player", "player_ball")]
+[node name="PlayerManager" type="Node3D" node_paths=PackedStringArray("gui", "player", "player_ball", "iframe_timer")]
 script = ExtResource("1_u2qru")
 gui = NodePath("GUI")
 player = NodePath("Player")
 player_ball = NodePath("PlayerBall")
+iframe_timer = NodePath("IframeTimer")
 
 [node name="PlayerBall" parent="." node_paths=PackedStringArray("player", "ball_camera") instance=ExtResource("2_03plg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 0)
@@ -106,3 +107,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 text = "Press LB"
+
+[node name="IframeTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="IframeTimer" to="." method="_on_iframe_timer_timeout"]

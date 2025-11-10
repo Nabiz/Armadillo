@@ -2285,8 +2285,8 @@ cap_top = false
 [sub_resource type="BoxShape3D" id="BoxShape3D_t26db"]
 size = Vector3(0.435, 1, 0.68)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "player_area", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
-collision_mask = 321
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "player_area_collision", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
+collision_mask = 65
 floor_constant_speed = true
 floor_max_angle = 1.39626
 script = ExtResource("1_xhfnw")
@@ -2295,7 +2295,7 @@ collision = NodePath("CollisionShape3D")
 animation = NodePath("ArmadilloGFX/AnimationPlayer")
 camera = NodePath("Camera3D")
 state_machine = NodePath("PlayerStateMachine")
-player_area = NodePath("PlayerArea3D")
+player_area_collision = NodePath("PlayerArea3D/CollisionShape3D")
 attack_areas = [NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea")]
 forrward_wall_raycast = NodePath("ArmadilloGFX/PlayerMovementCheckAreas/ForrwardWallRayCast")
 left_wall_raycast = NodePath("ArmadilloGFX/PlayerMovementCheckAreas/LeftWallRayCast")

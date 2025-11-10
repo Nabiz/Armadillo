@@ -4,7 +4,7 @@ class_name PlayerBall
 var accelaration: float = 3.0
 var max_speed: float = 12.0
 var jump_speed: float = 5.6
-@export var ball_area: Area3D
+@export var ball_area_collision: CollisionShape3D
 @export var player: Player
 @export var collision: CollisionShape3D
 @export var ball_camera: Camera3D
@@ -20,6 +20,7 @@ func _ready() -> void:
 var rotation_speed: float = 1.0
 var _rotation_axis: Vector3
 var _rotation_angle: float
+
 func _process(delta: float) -> void:
 	if velocity.length_squared() > 0.001:
 		_rotation_axis = Vector3.UP.cross(velocity).normalized()
@@ -86,3 +87,6 @@ func deactivate_ball() -> void:
 	visible = false
 	
 	ball_camera.clear_current()
+
+func set_area_collsion_disabled(value: bool) -> void:
+	ball_area_collision.set_disabled(value)

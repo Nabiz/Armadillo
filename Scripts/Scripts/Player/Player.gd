@@ -13,7 +13,7 @@ class_name Player
 @export var camera: Camera3D
 @export var state_machine: PlayerStateMachine
 
-@export var player_area: Area3D
+@export var player_area_collision: CollisionShape3D
 @export var attack_areas: Array[PlayerAttackArea]
 
 @export var forrward_wall_raycast: RayCast3D
@@ -130,3 +130,6 @@ func change_movment_strategy() -> void:
 		_change_movement_strategy_to_2d()
 	else:
 		_change_movement_strategy_to_3d()
+
+func set_area_collsion_disabled(value: bool) -> void:
+	player_area_collision.set_disabled(value)
