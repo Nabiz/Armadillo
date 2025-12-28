@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgi3en7lguwy3"]
+[gd_scene load_steps=12 format=3 uid="uid://cgi3en7lguwy3"]
 
 [ext_resource type="Script" uid="uid://def6kj353pvn8" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStateMachine.gd" id="1_i0y42"]
 [ext_resource type="Script" uid="uid://0as2hidu0k1q" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/IdlePlayerState.gd" id="2_vocv5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bdt5jppxja6mk" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/DropAttackPlayerState.gd" id="8_foig6"]
 [ext_resource type="Script" uid="uid://r5l7xgxsoshv" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/ForrwardWallrunPlayerState.gd" id="9_h2b4q"]
 [ext_resource type="Script" uid="uid://kq0ldfnlxowq" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/SideWallrunPlayerState.gd" id="10_atyuq"]
+[ext_resource type="Script" uid="uid://2xxrtluco8eo" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/KnockbackPlayerState.gd" id="11_cmax7"]
 
 [node name="PlayerStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_i0y42")
@@ -42,6 +43,9 @@ script = ExtResource("9_h2b4q")
 [node name="SideWallrun" type="Node" parent="."]
 script = ExtResource("10_atyuq")
 
+[node name="Knockback" type="Node" parent="."]
+script = ExtResource("11_cmax7")
+
 [connection signal="state_changing" from="Idle" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Fall" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Walk" to="." method="transit_to_new_state"]
@@ -51,3 +55,4 @@ script = ExtResource("10_atyuq")
 [connection signal="state_changing" from="DropAttack" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="ForrwardWallrun" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="SideWallrun" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Knockback" to="." method="transit_to_new_state"]

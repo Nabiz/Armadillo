@@ -4,7 +4,7 @@ class_name GUI
 @export var coin_label: Label
 @export var hearts_label: Label
 var coins: int = 0
-var hearts: int = 3
+var hearts: int = 100
 
 func _ready() -> void:
 	coin_label.text = str(coins)

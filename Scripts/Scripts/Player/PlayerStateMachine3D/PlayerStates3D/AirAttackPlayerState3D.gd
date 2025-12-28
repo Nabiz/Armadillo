@@ -15,7 +15,6 @@ func enter() -> void:
 		#return
 
 	enabled = false
-	player.disable_destroyable_collision()
 	
 	player.velocity.y = 0
 
@@ -24,7 +23,6 @@ func enter() -> void:
 	player.animation.play("AirAttack")
 
 func exit() -> void:
-	player.enable_destroyable_collision()
 	player.disable_all_attack_areas()
 	
 	player.animation.speed_scale = 1.0

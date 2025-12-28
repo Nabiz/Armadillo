@@ -4,7 +4,7 @@ class_name PlayerBall
 var accelaration: float = 3.0
 var max_speed: float = 12.0
 var jump_speed: float = 5.6
-@export var ball_area_collision: CollisionShape3D
+@export var hitbox_collision: CollisionShape3D
 @export var player: Player
 @export var collision: CollisionShape3D
 @export var ball_camera: Camera3D
@@ -75,6 +75,7 @@ func activate_ball() -> void:
 	set_physics_process(true)
 	set_process(true)
 	collision.disabled = false
+	set_hitbox_collsion_disabled(false)
 	visible = true
 	
 	ball_camera.make_current()
@@ -83,10 +84,11 @@ func activate_ball() -> void:
 func deactivate_ball() -> void:
 	set_physics_process(false)
 	set_process(false)
+	set_hitbox_collsion_disabled(true)
 	collision.disabled = true
 	visible = false
 	
 	ball_camera.clear_current()
 
-func set_area_collsion_disabled(value: bool) -> void:
-	ball_area_collision.set_disabled(value)
+func set_hitbox_collsion_disabled(value: bool) -> void:
+	hitbox_collision.set_disabled(value)

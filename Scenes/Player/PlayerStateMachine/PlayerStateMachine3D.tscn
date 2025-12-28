@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfmid7wfljjsa"]
+[gd_scene load_steps=12 format=3 uid="uid://cfmid7wfljjsa"]
 
 [ext_resource type="Script" uid="uid://cybhsmpvf73dr" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStateMachine3D.gd" id="1_y1ole"]
 [ext_resource type="Script" uid="uid://beiepeayq81e4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/WalkPlayerState3D.gd" id="2_wmhvx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cwru40vsdh4bl" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/DropAttackPlayerState3D.gd" id="8_fulwe"]
 [ext_resource type="Script" uid="uid://dduqvsb1kq1o4" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/ForrwardWallrunPlayerState3D.gd" id="9_iyrek"]
 [ext_resource type="Script" uid="uid://bkowm27icnyrn" path="res://Scripts/Scripts/Player/PlayerStateMachine/PlayerStates/SideWallrunPlayerState3D.gd" id="10_0uu7f"]
+[ext_resource type="Script" uid="uid://bfdxf3wbuwsl3" path="res://Scripts/Scripts/Player/PlayerStateMachine3D/PlayerStates3D/KnockbakcPlayerState3D.gd" id="11_242ud"]
 
 [node name="PlayerStateMachine3D" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_y1ole")
@@ -42,6 +43,9 @@ script = ExtResource("9_iyrek")
 [node name="SideWallrun3D" type="Node" parent="."]
 script = ExtResource("10_0uu7f")
 
+[node name="Knockback3D" type="Node" parent="."]
+script = ExtResource("11_242ud")
+
 [connection signal="state_changing" from="Walk3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Idle3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="Jump3D" to="." method="transit_to_new_state"]
@@ -51,3 +55,4 @@ script = ExtResource("10_0uu7f")
 [connection signal="state_changing" from="DropAttack3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="ForrwardWallrun3D" to="." method="transit_to_new_state"]
 [connection signal="state_changing" from="SideWallrun3D" to="." method="transit_to_new_state"]
+[connection signal="state_changing" from="Knockback3D" to="." method="transit_to_new_state"]

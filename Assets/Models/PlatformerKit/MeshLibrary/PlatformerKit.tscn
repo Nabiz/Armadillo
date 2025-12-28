@@ -563,6 +563,7 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_2wac0")
 
 [node name="blockDirtRamp2" type="Node3D" parent="."]
+visible = false
 
 [node name="blockDirtRamp" type="MeshInstance3D" parent="blockDirtRamp2"]
 mesh = SubResource("ArrayMesh_e1nye")

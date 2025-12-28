@@ -2283,10 +2283,10 @@ rings = 48
 cap_top = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t26db"]
-size = Vector3(0.435, 1, 0.68)
+size = Vector3(0.53, 1.14136, 0.68)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "player_area_collision", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
-collision_mask = 65
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gfx", "collision", "animation", "camera", "state_machine", "hitbox_collision", "attack_areas", "forrward_wall_raycast", "left_wall_raycast", "right_wall_raycast", "state_machine_2d", "state_machine_3d")]
+collision_mask = 73
 floor_constant_speed = true
 floor_max_angle = 1.39626
 script = ExtResource("1_xhfnw")
@@ -2295,7 +2295,7 @@ collision = NodePath("CollisionShape3D")
 animation = NodePath("ArmadilloGFX/AnimationPlayer")
 camera = NodePath("Camera3D")
 state_machine = NodePath("PlayerStateMachine")
-player_area_collision = NodePath("PlayerArea3D/CollisionShape3D")
+hitbox_collision = NodePath("HitboxArea3D/CollisionShape3D")
 attack_areas = [NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerAirAttackArea"), NodePath("ArmadilloGFX/PlayerAttackAreas/PlayerDropAttackArea")]
 forrward_wall_raycast = NodePath("ArmadilloGFX/PlayerMovementCheckAreas/ForrwardWallRayCast")
 left_wall_raycast = NodePath("ArmadilloGFX/PlayerMovementCheckAreas/LeftWallRayCast")
@@ -2314,35 +2314,33 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/position = Vector3(0.841249, 3.65089, -53.6908)
-bones/0/rotation = Quaternion(-0.654315, -0.079954, 0.00218828, 0.75198)
-bones/1/rotation = Quaternion(0.103133, 0.134778, 0.045844, 0.984427)
-bones/2/rotation = Quaternion(-0.0296225, 0.0156076, 0.0116194, 0.999372)
-bones/3/rotation = Quaternion(-0.0292522, 0.0156285, 0.0105221, 0.999395)
-bones/4/rotation = Quaternion(0.0493642, -0.0203323, -0.0277026, 0.99819)
-bones/5/rotation = Quaternion(-0.171513, -0.0576759, 0.00756736, 0.983463)
-bones/7/rotation = Quaternion(-0.612906, -0.406784, 0.518394, -0.436051)
-bones/8/rotation = Quaternion(0.351899, 0.382543, -0.346687, 0.780792)
-bones/9/rotation = Quaternion(0.0188082, 0.000784949, 0.59031, 0.806957)
-bones/10/rotation = Quaternion(0.0169725, -0.0868418, -0.0337474, 0.995506)
-bones/11/rotation = Quaternion(0.0516896, 0.0143143, -0.00758544, 0.998532)
-bones/12/rotation = Quaternion(-0.00166913, 0.0219787, -0.20529, 0.978453)
-bones/13/rotation = Quaternion(-0.0210776, -0.0186534, 0.0384769, 0.998863)
-bones/15/rotation = Quaternion(0.595413, -0.411383, 0.536695, 0.433826)
-bones/16/rotation = Quaternion(0.331096, 0.0595048, -0.116893, 0.934436)
-bones/17/rotation = Quaternion(0.016919, -0.000205396, -0.721815, 0.69188)
-bones/18/rotation = Quaternion(-0.182638, 0.125294, -0.0322496, 0.974631)
-bones/19/rotation = Quaternion(0.0216161, -0.740855, -0.0177026, 0.671083)
-bones/20/rotation = Quaternion(0.387371, -0.0560859, -0.084837, 0.916297)
-bones/21/rotation = Quaternion(0.303146, 0.0105039, 0.0551099, 0.951291)
-bones/23/rotation = Quaternion(0.0695308, 0.52661, 0.84004, -0.110362)
-bones/24/rotation = Quaternion(-0.907404, -0.0789722, 0.0685899, 0.407033)
-bones/25/rotation = Quaternion(0.306742, 0.0955401, 0.163477, 0.932768)
-bones/26/rotation = Quaternion(0.343192, -0.0597933, 0.0261364, 0.936996)
-bones/28/rotation = Quaternion(-0.0614958, 0.00488073, 0.997537, -0.0333824)
-bones/29/rotation = Quaternion(-0.580926, -0.090065, 0.0541655, 0.807142)
-bones/30/rotation = Quaternion(0.798274, -0.114671, -0.166598, 0.567322)
-bones/31/rotation = Quaternion(0.584079, 0.0693208, -0.0348077, 0.807982)
+bones/0/rotation = Quaternion(-0.679264, -0.267932, 0.322437, 0.602368)
+bones/1/rotation = Quaternion(0.109787, 0.153722, 0.0311704, 0.981501)
+bones/3/rotation = Quaternion(0.00249804, 0.095783, 0.0458679, 0.994342)
+bones/4/rotation = Quaternion(-0.00250862, -0.0303077, 0.00824954, 0.999503)
+bones/5/rotation = Quaternion(-0.139822, 0.0213919, -0.0384065, 0.9892)
+bones/7/rotation = Quaternion(-0.577172, -0.41593, 0.572686, -0.407315)
+bones/8/rotation = Quaternion(0.15684, 0.298219, -0.375487, 0.86341)
+bones/9/rotation = Quaternion(0.0215144, 0.000717006, 0.675249, 0.737275)
+bones/10/rotation = Quaternion(-0.253535, 0.022398, 0.114521, 0.960262)
+bones/11/rotation = Quaternion(0.168547, -0.00133577, 0.0953527, 0.98107)
+bones/12/rotation = Quaternion(0.233994, 0.0700097, -0.218912, 0.944681)
+bones/13/rotation = Quaternion(-0.0690432, -0.0374921, 0.0429557, 0.995983)
+bones/15/rotation = Quaternion(0.589958, -0.411687, 0.49755, 0.484673)
+bones/16/rotation = Quaternion(0.347381, 0.372152, -0.216532, 0.833032)
+bones/17/rotation = Quaternion(0.020973, -0.000132227, -0.894767, 0.44604)
+bones/18/rotation = Quaternion(0.127776, -0.327147, 0.0663436, 0.933941)
+bones/19/rotation = Quaternion(0.0567008, -0.708173, -0.195619, 0.676025)
+bones/20/rotation = Quaternion(0.384576, -0.0246041, -0.00978345, 0.922714)
+bones/21/rotation = Quaternion(0.297392, -0.0559747, 0.0208043, 0.952886)
+bones/23/rotation = Quaternion(0.016432, 0.843025, 0.529465, -0.0933073)
+bones/24/rotation = Quaternion(-0.915441, 0.0120472, 0.0870338, 0.392744)
+bones/25/rotation = Quaternion(0.0698877, 0.13377, 0.0555766, 0.986982)
+bones/26/rotation = Quaternion(0.189068, -0.0597156, 0.0165449, 0.980007)
+bones/28/rotation = Quaternion(-0.05069, 0.122634, 0.954269, 0.267885)
+bones/29/rotation = Quaternion(-0.576527, -0.0275524, -0.071168, 0.813507)
+bones/30/rotation = Quaternion(0.477563, -0.183037, 0.0627148, 0.857029)
+bones/31/rotation = Quaternion(0.631268, 0.137664, 0.0081931, 0.763206)
 
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
@@ -2408,12 +2406,13 @@ player = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 8)
 current = true
 
-[node name="PlayerArea3D" type="Area3D" parent="."]
+[node name="HitboxArea3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.707983, 0)
 collision_layer = 2
 collision_mask = 304
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0706787, 0)
 shape = SubResource("BoxShape3D_t26db")
 
 [editable path="ArmadilloGFX"]

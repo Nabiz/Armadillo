@@ -8,11 +8,11 @@ radius = 0.48
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_walc5"]
 
-[node name="PlayerBall" type="CharacterBody3D" node_paths=PackedStringArray("ball_area_collision", "collision", "gfx_sphere")]
-collision_mask = 65
+[node name="PlayerBall" type="CharacterBody3D" node_paths=PackedStringArray("hitbox_collision", "collision", "gfx_sphere")]
+collision_mask = 73
 floor_snap_length = 0.2
 script = ExtResource("1_xdcgx")
-ball_area_collision = NodePath("PlayerBallArea3D/CollisionShape3D")
+hitbox_collision = NodePath("HitboxArea3D/CollisionShape3D")
 collision = NodePath("CollisionShape3D")
 gfx_sphere = NodePath("Armadillo_Sphere")
 
@@ -22,11 +22,11 @@ shape = SubResource("SphereShape3D_o7n6k")
 [node name="Armadillo_Sphere" parent="." instance=ExtResource("2_walc5")]
 transform = Transform3D(-2.53526e-08, 0, 0.58, 0, 0.58, 0, -0.58, 0, -2.53526e-08, 0.12, 0, 0)
 
-[node name="PlayerBallArea3D" type="Area3D" parent="."]
+[node name="HitboxArea3D" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 304
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerBallArea3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxArea3D"]
 shape = SubResource("SphereShape3D_walc5")
 
 [editable path="Armadillo_Sphere"]

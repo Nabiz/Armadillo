@@ -13,7 +13,7 @@ class_name Player
 @export var camera: Camera3D
 @export var state_machine: PlayerStateMachine
 
-@export var player_area_collision: CollisionShape3D
+@export var hitbox_collision: CollisionShape3D
 @export var attack_areas: Array[PlayerAttackArea]
 
 @export var forrward_wall_raycast: RayCast3D
@@ -24,6 +24,7 @@ class_name Player
 @export var player_ball: PlayerBall
 @export var transformation_vfx: GPUParticles3D
 @export var transformation_timer: CooldownTimer
+var is_ball: bool = false
 
 @export_category("FSM")
 @export var tooltip: Label
@@ -39,18 +40,10 @@ static var instance: Player
 func _enter_tree() -> void:
 	instance = self
 
-func disable_destroyable_collision() -> void:
-	set_collision_mask_value(2, false)
-
-func enable_destroyable_collision() -> void:
-	set_collision_mask_value(2, true)
-
 func disable_all_attack_areas() -> void:
 	for attack_area: PlayerAttackArea in attack_areas:
 		attack_area.disable_attack_area()
 
-
-var is_ball: bool = false
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("input_ball") and SkillManager.is_ball_unlcoked:
 		transform_to_ball(delta)
@@ -67,6 +60,7 @@ func transform_to_ball(delta: float) -> void:
 		if not is_ball:
 			transformation_vfx.position = Vector3(0.0,0.6,0.0) + velocity * delta
 			transformation_vfx.restart()
+			set_hitbox_collsion_disabled(true)
 			collision.disabled = true
 			gfx.visible = false
 			is_ball = true
@@ -90,6 +84,7 @@ func transform_to_ball(delta: float) -> void:
 			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
 			
 			collision.disabled = false
+			set_hitbox_collsion_disabled(false)
 			gfx.visible = true
 
 func has_wall_on_front() -> bool:
@@ -131,5 +126,5 @@ func change_movment_strategy() -> void:
 	else:
 		_change_movement_strategy_to_3d()
 
-func set_area_collsion_disabled(value: bool) -> void:
-	player_area_collision.set_disabled(value)
+func set_hitbox_collsion_disabled(value: bool) -> void:
+	hitbox_collision.set_disabled(value)
