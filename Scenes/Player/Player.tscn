@@ -2313,35 +2313,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 [node name="Armature" parent="ArmadilloGFX" index="0"]
 transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 0, 0)
 
-[node name="Skeleton3D" parent="ArmadilloGFX/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.679264, -0.267932, 0.322437, 0.602368)
-bones/1/rotation = Quaternion(0.109787, 0.153722, 0.0311704, 0.981501)
-bones/3/rotation = Quaternion(0.00249804, 0.095783, 0.0458679, 0.994342)
-bones/4/rotation = Quaternion(-0.00250862, -0.0303077, 0.00824954, 0.999503)
-bones/5/rotation = Quaternion(-0.139822, 0.0213919, -0.0384065, 0.9892)
-bones/7/rotation = Quaternion(-0.577172, -0.41593, 0.572686, -0.407315)
-bones/8/rotation = Quaternion(0.15684, 0.298219, -0.375487, 0.86341)
-bones/9/rotation = Quaternion(0.0215144, 0.000717006, 0.675249, 0.737275)
-bones/10/rotation = Quaternion(-0.253535, 0.022398, 0.114521, 0.960262)
-bones/11/rotation = Quaternion(0.168547, -0.00133577, 0.0953527, 0.98107)
-bones/12/rotation = Quaternion(0.233994, 0.0700097, -0.218912, 0.944681)
-bones/13/rotation = Quaternion(-0.0690432, -0.0374921, 0.0429557, 0.995983)
-bones/15/rotation = Quaternion(0.589958, -0.411687, 0.49755, 0.484673)
-bones/16/rotation = Quaternion(0.347381, 0.372152, -0.216532, 0.833032)
-bones/17/rotation = Quaternion(0.020973, -0.000132227, -0.894767, 0.44604)
-bones/18/rotation = Quaternion(0.127776, -0.327147, 0.0663436, 0.933941)
-bones/19/rotation = Quaternion(0.0567008, -0.708173, -0.195619, 0.676025)
-bones/20/rotation = Quaternion(0.384576, -0.0246041, -0.00978345, 0.922714)
-bones/21/rotation = Quaternion(0.297392, -0.0559747, 0.0208043, 0.952886)
-bones/23/rotation = Quaternion(0.016432, 0.843025, 0.529465, -0.0933073)
-bones/24/rotation = Quaternion(-0.915441, 0.0120472, 0.0870338, 0.392744)
-bones/25/rotation = Quaternion(0.0698877, 0.13377, 0.0555766, 0.986982)
-bones/26/rotation = Quaternion(0.189068, -0.0597156, 0.0165449, 0.980007)
-bones/28/rotation = Quaternion(-0.05069, 0.122634, 0.954269, 0.267885)
-bones/29/rotation = Quaternion(-0.576527, -0.0275524, -0.071168, 0.813507)
-bones/30/rotation = Quaternion(0.477563, -0.183037, 0.0627148, 0.857029)
-bones/31/rotation = Quaternion(0.631268, 0.137664, 0.0081931, 0.763206)
-
 [node name="AnimationPlayer" parent="ArmadilloGFX" index="1"]
 libraries = {
 &"": SubResource("AnimationLibrary_epg6k")

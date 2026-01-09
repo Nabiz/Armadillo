@@ -2,8 +2,8 @@ extends CharacterBody3D
 class_name Player
 
 @export_category("Movement Parameters")
-@export var speed: float = 5.0
-@export var air_attack_speed: float = 6.0
+@export var speed: float = 4.0
+@export var air_attack_speed: float = 5.0
 @export var jump_velocity: float = 6.5
 
 @export_category("Child Nodes")
