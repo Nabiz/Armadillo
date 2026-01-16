@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdyu2w6vtig6v"]
+
+[ext_resource type="Script" uid="uid://cwolrjoo71jma" path="res://Scripts/Scripts/Enemy/EnemyAttackArea.gd" id="1_2cgt2"]
+[ext_resource type="Script" uid="uid://b27ex8maa3rm8" path="res://Scripts/Scripts/Enemy/EnemyBullet.gd" id="1_b3jh4"]
+[ext_resource type="PackedScene" uid="uid://ds11lavbncx8x" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/spikeBlock.glb" id="2_b3jh4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_46ps1"]
+radius = 0.4
+
+[node name="EnemyBullet" type="Node3D"]
+script = ExtResource("1_b3jh4")
+
+[node name="BulletHitbox" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_2cgt2")
+side_knockback_speed = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletHitbox"]
+shape = SubResource("SphereShape3D_46ps1")
+
+[node name="spikeBlock2" parent="." instance=ExtResource("2_b3jh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[connection signal="area_entered" from="BulletHitbox" to="BulletHitbox" method="_on_area_entered"]

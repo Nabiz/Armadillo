@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brfhehoane2be"]
 
-[ext_resource type="Script" uid="uid://c0vbki07tj3v5" path="res://Scripts/Scripts/Props/ChangeMovementStratedyArea.gd" id="1_wvplm"]
+[ext_resource type="Script" uid="uid://c0vbki07tj3v5" path="res://Scripts/Scripts/Props/ChangeMovementStrategyArea.gd" id="1_wvplm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71tao"]
 size = Vector3(6.98389, 1, 1)

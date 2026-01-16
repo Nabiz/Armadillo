@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mwvrurf3hx31"]
+
+[ext_resource type="PackedScene" uid="uid://bettighl455l2" path="res://Assets/Models/PlatformerKit/PlatformerKitModels/blockMoving.glb" id="1_fma03"]
+[ext_resource type="Script" uid="uid://cn61f77lsn660" path="res://Scripts/Scripts/Props/FastTravelArea.gd" id="1_wp116"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wp116"]
+size = Vector3(1.55719, 1.12549, 1)
+
+[node name="FastTravelArea" type="Area3D"]
+process_mode = 3
+collision_layer = 256
+collision_mask = 2
+script = ExtResource("1_wp116")
+
+[node name="blockMoving2" parent="." instance=ExtResource("1_fma03")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0235901, 0.0627441, 0)
+shape = SubResource("BoxShape3D_wp116")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
