@@ -12,7 +12,7 @@ script = ExtResource("1_b3jh4")
 
 [node name="BulletHitbox" type="Area3D" parent="."]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 66
 script = ExtResource("1_2cgt2")
 side_knockback_speed = 5.0
 
@@ -22,4 +22,9 @@ shape = SubResource("SphereShape3D_46ps1")
 [node name="spikeBlock2" parent="." instance=ExtResource("2_b3jh4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
+[node name="MaxLifeTimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="area_entered" from="BulletHitbox" to="BulletHitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="BulletHitbox" to="." method="_on_bullet_hitbox_body_entered"]
+[connection signal="timeout" from="MaxLifeTimer" to="." method="_on_max_life_timer_timeout"]
