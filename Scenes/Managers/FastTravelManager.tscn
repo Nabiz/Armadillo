@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://wbua602qamxo"]
-
-[ext_resource type="Script" uid="uid://d03soqwo1mutr" path="res://Scripts/Scripts/Managers/FastTravelManager.gd" id="1_r5ksj"]
-
-[node name="FastTravelManager" type="Node"]
-process_mode = 3
-script = ExtResource("1_r5ksj")

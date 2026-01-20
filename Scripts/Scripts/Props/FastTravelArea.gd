@@ -1,8 +1,8 @@
 class_name FastTravelArea
 extends Area3D
 
-var can_teleport = false
-@export var spot_name = "Leśna Kraina"
+var can_teleport: bool = false
+@export var spot_name: String = "Leśna Kraina"
 
 func _ready() -> void:
 	FastTravelManager.add_travel_spot(self)
@@ -19,12 +19,12 @@ func _input(event: InputEvent) -> void:
 			FastTravelManager.ui_fast_travel.hide()
 
 
-func _on_area_entered(area: Area3D) -> void:
+func _on_area_entered(_area: Area3D) -> void:
 	Player.instance.tooltip.show()
 	can_teleport = true
 
 
-func _on_area_exited(area: Area3D) -> void:
+func _on_area_exited(_area: Area3D) -> void:
 		Player.instance.tooltip.hide()
 		can_teleport = false
 		FastTravelManager.ui_fast_travel.hide()

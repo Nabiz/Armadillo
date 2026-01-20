@@ -617,6 +617,7 @@ transform = Transform3D(0.99999, 0.00436331, 0, -0.00436331, 0.99999, 0, 0, 0, 1
 
 [node name="FastTravelArea" parent="LevelStructure2" instance=ExtResource("17_wg3rq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.2772, 0.515045, 0)
+spot_name = null
 
 [node name="FastTravelArea2" parent="LevelStructure2" instance=ExtResource("17_wg3rq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.529, 0.515, 0)

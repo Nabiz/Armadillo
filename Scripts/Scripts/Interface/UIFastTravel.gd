@@ -2,8 +2,8 @@ class_name UIFastTravel
 
 extends CanvasLayer
 
-var button: Button
-var fast_travel_button_scene = preload("res://Scenes/Interface/FastTravel/FastTravelButton.tscn")
+var button: FastTravelButton
+var fast_travel_button_scene: PackedScene = preload("res://Scenes/Interface/FastTravel/FastTravelButton.tscn")
 @export var button_container: Container
 
 func _enter_tree() -> void:
@@ -16,5 +16,5 @@ func initialize_spot_list() -> void:
 			button_container.add_child(button)
 			button.initialize_button(spot)
 
-func focus_button():
+func focus_button() -> void:
 	button.grab_focus()

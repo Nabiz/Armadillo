@@ -1,8 +1,8 @@
+class_name FastTravelManager
 extends Node
 
-var travel_spots: Array[FastTravelArea]
-var ui_fast_travel: UIFastTravel
+static var travel_spots: Array[FastTravelArea]
+static var ui_fast_travel: UIFastTravel
 
-func add_travel_spot(fta: FastTravelArea):
+static func add_travel_spot(fta: FastTravelArea) -> void:
 	travel_spots.append(fta)
-	

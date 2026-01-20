@@ -20,7 +20,8 @@ func take_damage(ammount: int, knockback_velocity: Vector3) -> void:
 	if player.is_ball:
 		player_ball.set_hitbox_collsion_disabled(true)
 		player_ball.velocity = knockback_velocity
-		player_ball.gfx_sphere.get_node("Mesh").set_surface_override_material(0, material)
+		var mesh: MeshInstance3D = player_ball.gfx_sphere.get_node("Mesh")
+		mesh.set_surface_override_material(0, material)
 	else:
 		player.set_hitbox_collsion_disabled(true)
 		if player.is_movment3D:
@@ -28,7 +29,8 @@ func take_damage(ammount: int, knockback_velocity: Vector3) -> void:
 		else:
 			player.state_machine.transit_to_new_state(KnockbackPlayerState.instance)
 		player.velocity = knockback_velocity
-		player.gfx.get_node("Armature/Skeleton3D/input").set_surface_override_material(0, material)
+		var mesh: MeshInstance3D = player.gfx.get_node("Armature/Skeleton3D/input")
+		mesh.set_surface_override_material(0, material)
 	
 	iframe_timer.start()
 	if gui.hearts <= 0:
@@ -40,6 +42,8 @@ func _on_iframe_timer_timeout() -> void:
 		player_ball.set_hitbox_collsion_disabled(false)
 	else:
 		player.set_hitbox_collsion_disabled(false)
-	player.gfx.get_node("Armature/Skeleton3D/input").set_surface_override_material(0, null)
-	player_ball.gfx_sphere.get_node("Mesh").set_surface_override_material(0, null)
+	var mesh: MeshInstance3D = player.gfx.get_node("Armature/Skeleton3D/input")
+	mesh.set_surface_override_material(0, null)
+	var ball_mesh: MeshInstance3D = player_ball.gfx_sphere.get_node("Mesh")
+	ball_mesh.set_surface_override_material(0, null)
 	

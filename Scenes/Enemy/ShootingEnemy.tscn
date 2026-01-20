@@ -225,13 +225,14 @@ bind/57/pose = Transform3D(-0.991179, 0.0101165, -0.132168, -0.132494, -0.043813
 albedo_color = Color(0.248263, 2.84934e-05, 0.955197, 1)
 albedo_texture = ExtResource("4_udw57")
 
-[node name="ShootingEnemy" type="CharacterBody3D"]
+[node name="ShootingEnemy" type="CharacterBody3D" node_paths=PackedStringArray("bullet_spawn_marker")]
 collision_layer = 8
 collision_mask = 73
 axis_lock_linear_z = true
 axis_lock_angular_y = true
 script = ExtResource("1_0ekk4")
 bullet_scene = ExtResource("2_sh73l")
+bullet_spawn_marker = NodePath("Marker3D")
 speed = 4.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

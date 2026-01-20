@@ -1,5 +1,5 @@
-extends Node
 class_name SkillManager
+extends Node
 
 enum Skills { ATTACK, BALL, WALLRUN, DROP_ATTACK, AIR_ATTACK, DOUBLE_JUMP }
 

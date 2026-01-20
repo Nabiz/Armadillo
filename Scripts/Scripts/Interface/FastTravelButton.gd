@@ -1,8 +1,9 @@
+class_name FastTravelButton
 extends Button
 
 var _travel_spot: FastTravelArea = null
 
-func initialize_button(travel_spot: FastTravelArea):
+func initialize_button(travel_spot: FastTravelArea) -> void:
 	_travel_spot = travel_spot
 	text = travel_spot.spot_name
 

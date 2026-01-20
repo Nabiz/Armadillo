@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SkillManagerScene="*res://Scenes/Managers/SkillManagerScene.tscn"
-FastTravelManager="*res://Scenes/Managers/FastTravelManager.tscn"
+FastTravelManagerScene="*res://Scenes/Managers/FastTravelManagerScene.tscn"
 
 [debug]
 
