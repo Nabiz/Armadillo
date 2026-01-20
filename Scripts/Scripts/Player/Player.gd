@@ -72,6 +72,7 @@ func transform_to_ball(delta: float) -> void:
 			velocity = Vector3.ZERO
 			state_machine_2d.transit_to_new_state(FallPlayerState.instance)
 			state_machine_3d.transit_to_new_state(FallPlayerState3D.instance)
+			_disable_movement_state_machines()
 		else:
 			transformation_vfx.position = Vector3(0.0,0.6,0.0) + player_ball.velocity * delta
 			transformation_vfx.restart()
@@ -86,6 +87,7 @@ func transform_to_ball(delta: float) -> void:
 			collision.disabled = false
 			set_hitbox_collsion_disabled(false)
 			gfx.visible = true
+			_enable_state_machine_based_movement()
 
 func has_wall_on_front() -> bool:
 	forrward_wall_raycast.force_raycast_update()
@@ -119,6 +121,16 @@ func _change_movement_strategy_to_3d() -> void:
 		state_machine_2d.process_mode = Node.PROCESS_MODE_DISABLED
 		state_machine_3d.process_mode = Node.PROCESS_MODE_INHERIT
 		state_machine = state_machine_3d
+
+func _disable_movement_state_machines() -> void:
+		state_machine_2d.process_mode = Node.PROCESS_MODE_DISABLED
+		state_machine_3d.process_mode = Node.PROCESS_MODE_DISABLED
+
+func _enable_state_machine_based_movement() -> void:
+	if is_movment3D:
+		_change_movement_strategy_to_3d()
+	else:
+		_change_movement_strategy_to_2d()
 
 func change_movment_strategy() -> void:
 	if is_movment3D:
