@@ -626,4 +626,7 @@ spot_name = "Zagadkowe Rozdroża"
 [node name="ShootingEnemy" parent="LevelStructure2" instance=ExtResource("22_d1u0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577274, 0.464577, -0.232148)
 
+[node name="ChangeMovementStrategyArea2" parent="LevelStructure2" instance=ExtResource("12_71tao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -60)
+
 [editable path="LevelStructure/ChangeMovementStrategyArea"]

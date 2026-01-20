@@ -10,10 +10,6 @@ func handle_input(_event: InputEvent) -> void:
 	pass
 
 func enter() -> void:
-	#if abs(player.velocity.x) < 0.5:
-		#emit_signal("state_changing", FallPlayerState3D.instance)
-		#return
-
 	enabled = false
 	
 	player.velocity.y = 0
@@ -34,5 +30,3 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	pass
-	#if abs(player.velocity.x) < 0.1:
-		#emit_signal("state_changing", FallPlayerState3D.instance)

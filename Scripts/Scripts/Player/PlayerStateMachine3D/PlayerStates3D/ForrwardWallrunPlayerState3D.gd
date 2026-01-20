@@ -29,7 +29,7 @@ func exit() -> void:
 	player.animation.advance(0)
 
 func update(delta: float) -> void:
-	if not player.has_wall_on_front(): # or not Input.is_action_pressed("input_wallrun"):
+	if not player.has_wall_on_front():
 		emit_signal("state_changing", FallPlayerState3D.instance)
 	wallrun_time += delta
 	if wallrun_time >= max_wallrun_time:

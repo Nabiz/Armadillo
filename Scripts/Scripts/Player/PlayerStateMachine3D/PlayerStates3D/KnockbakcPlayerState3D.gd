@@ -20,23 +20,10 @@ func update(_delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	player.velocity += player.get_gravity() * delta
-	
-	#var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
 	var p: Player = player
 	
 	p.velocity.z = 0
-	#p.direction = (p.transform.basis * Vector3(input_dir.x, 0, 0)).normalized()
-	#
-	#if p.direction.length() > 0:
-		#var target_direction: Vector3 = -p.direction
-		#var up: Vector3 = Vector3.UP
-		#var target_basis: Basis = Basis.looking_at(target_direction, up)
-		#p.gfx.global_transform.basis = target_basis
-		#
-	#if p.direction:
-		#p.velocity.x = p.direction.x * p.speed
-	#else:
-		#p.velocity.x = move_toward(p.velocity.x, 0, p.speed)
 	
 	p.move_and_slide()
 	

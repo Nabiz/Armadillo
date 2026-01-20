@@ -13,8 +13,6 @@ func _enter_tree() -> void:
 
 func handle_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("input_jump"):
-		#var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		#if input_dir.dot(Vector2(player.direction.x, 0.0)) < -0.8:
 		emit_signal("state_changing", JumpPlayerState.instance)
 
 func enter() -> void:

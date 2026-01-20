@@ -57,12 +57,6 @@ func physics_update(_delta: float) -> void:
 	else:
 		p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
 		
-	#if p.direction:
-		#p.velocity = p.direction * p.speed + Vector3(0.0, p.velocity.y, 0.0)
-	#else:
-		#p.velocity.z = move_toward(p.velocity.z, 0, p.speed)
-	
-	#
 	if not p.is_on_floor():
 		emit_signal("state_changing", FallPlayerState3D.instance)
 	
